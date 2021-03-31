@@ -6,6 +6,8 @@ command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 # adds verbosity where we like it and shortens common commands.
 alias \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
+	backup="sudo timeshift --create --tags O" \
+	update="sudo pacman -Sy && sudo pacman -Su && yay -Sy && yay -Su" \
 	clr="clear" \
 	bat="cat /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
@@ -19,13 +21,10 @@ alias \
 	g="git" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
-	sdn="sudo shutdown -h now" \
+	sdn="sudo poweroff -h now" \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	p="sudo emerge" \
-  pq="sudo emerge -s"
-
 
 # adds color to commands.
 alias \
