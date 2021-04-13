@@ -1,5 +1,19 @@
 #!/bin/sh
 
+read -p "Initial Git setup? (y/N): " gitsetup
+
+case $gitsetup in
+	[Y|Yes|y|yes]* )
+		read -p "Enter Git Username: " gitusername
+		read -p "Enter Git Email: " gitemail
+		read -p "Enter Git Editor: " giteditor
+
+		git config --global user.name $gitusername
+		git config --global user.email $gitemail
+		git config --global core.editor $giteditor
+		;;
+esac
+
 read -p "Enter repository directory name: " reponame
 
 function config {
