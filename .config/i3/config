@@ -177,11 +177,11 @@ bindsym $mod+Shift+e exec exit #"i3-nagbar -t warning -m 'You pressed the exit s
 bindsym $mod+Control+Escape exec sudo shutdown now
 
 # screenshot
-bindsym --release Print exec "scrot ~/shots/screenshot%Y-%m-%d%H:%M%S.png"
+bindsym --release Print exec "scrot -zm ~/shots/screenshot%Y-%m-%d%H:%M%S.png"
 # window screenshot
-bindsym --release Shift+Print exec "scrot -u ~/shots/windowshot%Y-%m-%d%H:%M:%S.png"
+bindsym --release Shift+Print exec "scrot -uz ~/shots/windowshot%Y-%m-%d%H:%M:%S.png"
 # selection screenshot
-bindsym --release Control+Shift+Print exec "scrot -s ~/shots/selectshot%Y-%m-%d%H:%M:%S.png"
+bindsym --release Control+Shift+Print exec "scrot -sz ~/shots/selectshot%Y-%m-%d%H:%M:%S.png"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
