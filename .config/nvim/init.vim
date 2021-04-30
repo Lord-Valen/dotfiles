@@ -81,7 +81,7 @@ autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The lightline.vim theme
 let g:lightline = {
-      \ 'colorscheme': 'darcula',
+      \ 'colorscheme': 'dracula',
       \ }
 
 " Always show statusline
@@ -177,8 +177,9 @@ let g:python_highlight_all = 1
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufEnter *.org            call org#SetOrgFileType()
 
+set guifont=Inconsolata\ Nerd\ Font\ Mono:h12
 "set guioptions-=m  "remove menu bar
 "set guioptions-=T  "remove toolbar
 "set guioptions-=r  "remove right-hand scroll bar
 "set guioptions-=L  "remove left-hand scroll bar
-set guifont=SauceCodePro\ Nerd\ Font:h15
+"set guifont=SauceCodePro\ Nerd\ Font:h15

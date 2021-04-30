@@ -1,4 +1,21 @@
-https://lukesmith.xyz/rss.xml
-https://notrelated.libsyn.com/rss
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith (YouTube)"
+----------------
+----Podcasts----
+----------------
+https://feed.podbean.com/chernopodcast/feed.xml "tech"
+https://notrelated.libsyn.com/rss "Luke Smith"
+---------------
+----YouTube----
+---------------
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTralb_IaJg "Distrotube" "tech"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith (Youtube)" "Luke Smith" "tech"
+------------
+----Tech----
+------------
 https://www.archlinux.org/feeds/news/ "tech"
+https://artixlinux.org/feed.php "tech"
+https://itsfoss.com/feed "tech"
+https://linux.com/feeds/news/rss "tech"
+https://lukesmith.xyz/rss.xml "Luke Smith"
+-------------
+----Repos----
+-------------
