@@ -29,9 +29,9 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article white default bold
 
-browser linkhandler
+browser $HOME/.config/scripts/linkhandler.sh
 macro , open-in-browser
-macro t set browser "qndl" ; open-in-browser ; set browser linkhandler
+macro t set browser "$HOME/.config/qndl.sh" ; open-in-browser ; set browser linkhandler
 macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best" ; open-in-browser ; set browser linkhandler
 macro v set browser "mpv" ; open-in-browser ; set browser linkhandler
 macro w set browser "lynx" ; open-in-browser ; set browser linkhandler

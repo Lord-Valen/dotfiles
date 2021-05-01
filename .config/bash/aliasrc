@@ -3,7 +3,12 @@
 # Use neovim for vim when possible.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
-# adds verbosity where we like it and shortens common commands.
+# Stop making me type sudo >:|
+for x in mount umount sv pacman updatedb poweroff reboot ; do
+        alias $x="sudo $x"
+done
+
+# Adds verbosity where we like it and shortens common commands.
 alias \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
 	backup="sudo timeshift --create" \
@@ -19,26 +24,26 @@ alias \
 	ffmpeg="ffmpeg -hide_banner" \
   	ka="killall" \
 	g="git" \
+        p="pacman" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
-	sdn="sudo poweroff -h now" \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
 
-# Lets you run zathura independently.
-zathur () {
+# Runs zathura independently.
+z () {
 	zathura $* & disown
 }
 
-# adds color to commands.
+# Adds color to commands.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
 
-# This alias is important. It enables the `pauseallmpv` command.
+# Enables the `pauseallmpv` command.
 alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
 
 # Some other stuff
