@@ -177,7 +177,7 @@ let g:python_highlight_all = 1
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufEnter *.org            call org#SetOrgFileType()
 
-set guifont=Inconsolata\ Nerd\ Font\ Mono:h12
+set guifont=Inconsolata:h12
 "set guioptions-=m  "remove menu bar
 "set guioptions-=T  "remove toolbar
 "set guioptions-=r  "remove right-hand scroll bar

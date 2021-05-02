@@ -1,8 +1,13 @@
+------------------
+----Meta Feeds----
+------------------
+"query:Unread:unread = \"yes\" "meta"
 ----------------
 ----Podcasts----
 ----------------
-https://feed.podbean.com/chernopodcast/feed.xml "tech"
-https://notrelated.libsyn.com/rss "Luke Smith"
+"query:Unread Podcasts:(tags = \"podcast\") and (unread = \"yes\") "meta"
+https://feed.podbean.com/chernopodcast/feed.xml "tech" "podcast"
+https://notrelated.libsyn.com/rss "Luke Smith" "podcast"
 ---------------
 ----YouTube----
 ---------------
@@ -14,8 +19,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~L
 https://www.archlinux.org/feeds/news/ "tech"
 https://artixlinux.org/feed.php "tech"
 https://itsfoss.com/feed "tech"
-https://linux.com/feeds/news/rss "tech"
+https://www.linux.com/feed/
 https://lukesmith.xyz/rss.xml "Luke Smith"
 -------------
 ----Repos----
 -------------
+https://github.com/Lord-Valen.private.atom?token=ALAALN4G7T7OJP3DY6O43QF6TBIVA-
