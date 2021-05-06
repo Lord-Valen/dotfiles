@@ -70,7 +70,7 @@ bindsym $mod+Shift+$right move right
 
 # Split orientation.
 bindsym $mod+semicolon split h; exec notify-send 'Tile horizontally'
-bindsym $mod+v split v; exec notify-sent 'Tile vertically'
+bindsym $mod+v split v; exec notify-send 'Tile vertically'
 bindsym $mod+q split toggle
 
 # enter fullscreen mode for the focused container
