@@ -3,10 +3,7 @@
 
 !! Set a default font and font size as below:
 *.font: liberation-mono:size=14
-URxvt.font: xft:inconsolata-medium-r-normal
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-nvim.font: inconsolata:size=14
+nvim.font: Inconsolata\ Nerd\ Font\ Mono:size=14
 
 !! MentalOutlaw colour.
 ! special
