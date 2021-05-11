@@ -4,21 +4,22 @@
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Stop making me type sudo >:|
-for x in mount umount sv pacman updatedb poweroff reboot ; do
+for x in timeshift mount umount sv pacman updatedb poweroff reboot ; do
         alias $x="sudo $x"
 done
 
 # Adds verbosity where we like it and shortens common commands.
 alias \
-	config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
-	backup="sudo timeshift --create" \
-	update="sudo pacman -Sy && sudo pacman -Su && yay -Sy && yay -Su" \
+	conf="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
+	bup="sudo timeshift --create" \
+	upg="yay -Syu || sudo pacman -Syu" \
 	clr="clear" \
 	bat="cat /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
+        rmd="rmdir -pv" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
@@ -28,8 +29,7 @@ alias \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	f="$FILE" \
-	e="$EDITOR" \
-	v="$EDITOR" \
+	e="$EDITOR"
 
 # Runs zathura independently.
 z () {
