@@ -165,8 +165,13 @@ draw_bold_text_with_bright_colors: true
 colors:
         # Default colors
         primary:
-                background: '0x282c34'
-                foreground: '0xbbc2cf'
+                # Shapeshifter (dark)
+                background: '0x000000'
+                foreground: '0xababab'
+
+                # DT colours
+                #background: '0x282c34'
+                #foreground: '0xbbc2cf'
 
                 # Bright and dim foreground colors
                 #
@@ -179,8 +184,13 @@ colors:
         #
         # Colors which should be used to draw the terminal cursor. If these are unset, the cursor color will be the inverse of the cell color.
 cursor:
-        text: '0x000000'
-        cursor: '0xffffff'
+        # Shapeshifter (dark)
+        text:   '0xababab'
+        cursor: '0xababab'
+
+        # DT clolours
+        #text:   '0x000000'
+        #cursor: '0xffffff'
 
         # Selection colors
         #
@@ -188,29 +198,52 @@ cursor:
         # If selection background is unset, selection color will be the inverse of the cell colors.
         # If only text is unset the cell text color will remain the same.
         selection:
+                # DT colour
                 text: '0xbbc2cf'
 
         # Normal colors
         normal:
-                black:   '0x1c1f24'
-                red:     '0xff6c6b'
-                green:   '0x98be65'
-                yellow:  '0xda8548'
-                blue:    '0x51afef'
-                magenta: '0xc678dd'
-                cyan:    '0x5699af'
-                white:   '0x202328'
+                # Shapeshifter (dark)
+                black:   '0x000000'
+                red:     '0xe92f2f'
+                green:   '0x0ed839'
+                yellow:  '0xdddd13'
+                blue:    '0x3b48e3'
+                magenta: '0xf996e2'
+                cyan:    '0x23edda'
+                white:   '0xababab'
+
+                # DT colours
+                #black:   '0x1c1f24'
+                #red:     '0xff6c6b'
+                #green:   '0x98be65'
+                #yellow:  '0xda8548'
+                #blue:    '0x51afef'
+                #magenta: '0xc678dd'
+                #cyan:    '0x5699af'
+                #white:   '0x202328'
 
         # Bright colors
         bright:
-                black:   '0x5b6268'
-                red:     '0xda8548'
-                green:   '0x4db5bd'
-                yellow:  '0xecbe7b'
-                blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
-                magenta: '0xa9a1e1'
-                cyan:    '0x46d9ff'
-                white:   '0xdfdfdf'
+                # Shapeshiter (dark)
+                black:   '0x343434'
+                red:     '0xe92f2f'
+                green:   '0x0ed839'
+                yellow:  '0xdddd13'
+                blue:    '0x3b48e3'
+                magenta: '0xf996e2'
+                cyan:    '0x23edda'
+                white:   '0xf9f9f9'
+
+                # DT colours
+                #black:   '0x5b6268'
+                #red:     '0xda8548'
+                #green:   '0x4db5bd'
+                #yellow:  '0xecbe7b'
+                #blue:    '0x3071db'
+                #magenta: '0xa9a1e1'
+                #cyan:    '0x46d9ff'
+                #white:   '0xdfdfdf'
 
         # Dim colors
         #
