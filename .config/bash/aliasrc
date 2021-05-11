@@ -12,6 +12,7 @@ done
 alias \
 	conf="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
 	bup="sudo timeshift --create" \
+        res="sudo timeshift --restore" \
 	upg="yay -Syu || sudo pacman -Syu" \
 	clr="clear" \
 	bat="cat /sys/class/power_supply/BAT?/capacity" \
