@@ -34,7 +34,7 @@ battery all {
         format = "%status %percentage %remaining"
 }
 
-disk "/home/" {
+disk "/home" {
         format = "%avail / %total"
 }
 
