@@ -2,8 +2,18 @@
 *.alpha: 1
 
 !! Set a default font and font size as below:
-*.font: liberation-mono:size=14
-nvim.font: Inconsolata\ Nerd\ Font\ Mono:size=14
+*.font: literationmono\ Nerd\ Font:size=12
+nvim.font: Inconsolata\ Nerd\ Font\ Mono:size=12
+
+/* name		dark	light
+black           0	8
+red             1	9
+green	        2	10
+yellow	        3	11
+blue		4	12
+purple	        5	13
+cyan		6	14
+white	        7	15 */
 
 !! Shapeshifter
 ! special
@@ -80,34 +90,6 @@ nvim.font: Inconsolata\ Nerd\ Font\ Mono:size=14
 ! white
 *.color7:       #c5c8c6
 *.color15:      #ffffff */
-
-/* name		dark	light
-black           0	8
-red             1	9
-green	        2	10
-yellow	        3	11
-blue		4	12
-purple	        5	13
-cyan		6	14
-white	        7	15 */
-
-/* !! solarized
-*.color0:	#073642
-*.color1:	#dc322f
-*.color2:	#859900
-*.color3:	#b58900
-*.color4:	#268bd2
-*.color5:	#d33682
-*.color6:	#2aa198
-*.color7:	#eee8d5
-*.color9:	#cb4b16
-*.color8:	#fdf6e3
-*.color10:	#586e75
-*.color11:	#657b83
-*.color12:	#839496
-*.color13:	#6c71c4
-*.color14:	#93a1a1
-*.color15:	#fdf6e3 */
 
 /* !! Dracula Xresources palette
 *.foreground: #F8F8F2
