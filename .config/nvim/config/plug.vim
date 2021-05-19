@@ -18,8 +18,9 @@ call plug#begin('~/.vim/plugged')
         Plug 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
 "{{ Productivity }}
         Plug 'vimwiki/vimwiki'                             " VimWiki
-        Plug 'itchyny/vim-gitbranch'                       " Function to show branch name in lightline
+        Plug 'itchyny/vim-gitbranch'                       " Function to show git branch name in lightline
         Plug 'jreybert/vimagit'                            " Magit, but for vim
+        Plug 'axvr/org.vim'                                " Syntax higlinghting for .org files
 "{{ Tim Pope Plugins }}
         Plug 'tpope/vim-surround'                          " Change surrounding marks
 "{{ Syntax Highlighting and Colors }}
