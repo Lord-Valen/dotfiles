@@ -3,10 +3,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
 
+nnoremap <leader>wq :q<CR>
+nnoremap <leader>wc :clo<CR>
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Remap ESC to ii
-:imap ii <Esc>
+imap ii <Esc>
 
 " Smart home
 function! SmartHome()
