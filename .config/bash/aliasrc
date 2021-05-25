@@ -26,6 +26,10 @@ alias \
 	ffmpeg="ffmpeg -hide_banner" \
   	ka="killall" \
 	g="git" \
+        gf="g fetch" \
+        gs="g status" \
+        gp="g pull" \
+        gud="gf; gs" \
         p="pacman" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
