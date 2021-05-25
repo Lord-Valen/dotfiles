@@ -10,7 +10,6 @@ done
 
 # Adds verbosity where we like it and shortens common commands.
 alias \
-	conf="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
 	bup="sudo timeshift --create" \
         res="sudo timeshift --restore" \
 	upg="yay -Syu || sudo pacman -Syu" \
@@ -26,10 +25,21 @@ alias \
 	ffmpeg="ffmpeg -hide_banner" \
   	ka="killall" \
 	g="git" \
+        ga="g add" \
         gf="g fetch" \
         gs="g status" \
-        gp="g pull" \
+        gc="g commit" \
+        gpl="g pull" \
+        gps="g push" \
         gud="gf; gs" \
+	conf="g --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
+	confa="conf add" \
+	conff="conf fetch" \
+	confs="conf status" \
+	confc="conf commit -a" \
+	confpl="conf pull" \
+	confps="conf push" \
+	confud="conff; confs" \
         p="pacman" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
