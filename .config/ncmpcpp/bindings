@@ -476,4 +476,4 @@ def_key "f"
 def_key "x"
   delete_playlist_items
 def_key "P"
-  show_playlistt
+  show_playlist
