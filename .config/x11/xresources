@@ -1,6 +1,3 @@
-!! Transparency (0-1):
-*.alpha: 1
-
 !! Set a default font and font size as below:
 *.font: literationmono\ Nerd\ Font:size=12
 nvim.font: Inconsolata\ Nerd\ Font\ Mono:size=12
