@@ -11,7 +11,6 @@
 - [[#fonts][Fonts]]
 - [[#org-mode][Org Mode]]
   - [[#add-preamble-to-new-orgmode-files][Add Preamble to New Orgmode Files]]
-  - [[#bullets][Bullets]]
 
 * About this Config
 This is the DOOM Emacs configuration of Lord Valen:
@@ -98,10 +97,4 @@ Sets a preamble for Org files to save time. Stolen from [[https://github.com/Liq
                        (goto-line 1)
                        (forward-word)
                        (forward-char)))))))
-#+end_src
-
-** Bullets
-Use unicode bullets instead of asterisks.
-#+begin_src emacs-lisp
-(add-hook 'org-mode-hook (lamda () (org-bullets-mode 1)))
 #+end_src
