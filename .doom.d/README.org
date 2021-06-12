@@ -1,0 +1,107 @@
+#+TITLE:        DOOM Emacs Config
+#+AUTHOR:       Lord Valen
+#+DATE:         June 12, 2021
+#+DESCRIPTION:  Lord Valen's DOOM config
+#+PROPERTY:     header-args :tangle config.el
+
+* Table of Contents :TOC:
+- [[#about-this-config][About this Config]]
+- [[#lexical-binding][Lexical Binding]]
+- [[#name-and-email][Name and Email]]
+- [[#fonts][Fonts]]
+- [[#org-mode][Org Mode]]
+  - [[#add-preamble-to-new-orgmode-files][Add Preamble to New Orgmode Files]]
+  - [[#bullets][Bullets]]
+
+* About this Config
+This is the DOOM Emacs configuration of Lord Valen:
+[[https://gitlab.com/Lord_Valen][Gitlab]]
+
+Emacs is my IDE of choice but I'm still a Vim user! This config uses evil mode and some cosmetic plugins for your viewing pleasure.
+
+* Lexical Binding
+Enable lexical binding
+#+begin_src emacs-lisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+#+RESULTS:
+
+* Name and Email
+Username and email. Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
+#+begin_src emacs-lisp
+(setq user-full-name "Lord Valen"
+      user-mail-address "lord_valen@pm.me")
+#+end_src
+
+* Fonts
+Set fonts and font sizes.
+#+begin_src emacs-lisp
+(set-face-attribute 'default nil
+  :font "Inconsolata Nerd Font Mono"
+  :height 120
+  :weight 'medium)
+(set-face-attribute 'variable-pitch nil
+  :font "Inconsolata Nerd Font"
+  :height 120
+  :weight 'medium)
+(set-face-attribute 'fixed-pitch nil
+  :font "Inconsolata Nerd Font Mono"
+  :height 120
+  :weight 'medium)
+
+;; Makes commented text and keywords italics.
+;; Your font must have an italic face available.
+(set-face-attribute 'font-lock-comment-face nil
+  :slant 'italic)
+(set-face-attribute 'font-lock-keyword-face nil
+  :slant 'italic)
+
+;; Adjust line spacing.
+;;(setq-default line-spacing 0.12)
+
+;; Needed if using emacsclient. Otherwise, your fonts will be smaller than expected.
+(add-to-list 'default-frame-alist '(font . "Inconsolata Nerd Font Mono-12"))
+;; changes certain keywords to symbols, such as lamda!
+(setq global-prettify-symbols-mode t)
+#+end_src
+
+* Org Mode
+** Add Preamble to New Orgmode Files
+Sets a preamble for Org files to save time. Stolen from [[https://github.com/LiquidZulu/.doom.d][LiquidZulu]].
+
+#+begin_src elisp
+(setq
+ org-css "file:///e:/emacs/documents/org-css/css/org.css")
+(setq
+ org-preamble (format
+               "#+TITLE:\n#+AUTHOR:Lord Valen\n/This file is best viewed in [[https://www.gnu.org/software/emacs/][emacs]]!/"
+               org-css))
+
+(add-hook 'find-file-hook
+          (lambda ()
+            (if
+                (string=
+                 (substring
+                  (buffer-name)
+                  (if (> (length (buffer-name)) 3) (- (length (buffer-name)) 3) 0)
+                  nil)
+                 "org")
+                (if
+                    (=
+                     (buffer-size)
+                     0)
+                    ((lambda ()
+                       (insert org-preamble)
+
+                                        ; navigate point to end of #+TITLE:, doesnt work when launching from gitbash for some reason, point just moves right back down after doom does something
+                       (goto-line 1)
+                       (forward-word)
+                       (forward-char)))))))
+#+end_src
+
+** Bullets
+Use unicode bullets instead of asterisks.
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook (lamda () (org-bullets-mode 1)))
+#+end_src

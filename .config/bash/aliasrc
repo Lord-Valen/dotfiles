@@ -4,7 +4,7 @@
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Stop making me type sudo >:|
-for x in timeshift mount umount sv pacman updatedb poweroff reboot ; do
+for x in docker timeshift mount umount sv pacman updatedb poweroff reboot ; do
         alias $x="sudo $x"
 done
 
