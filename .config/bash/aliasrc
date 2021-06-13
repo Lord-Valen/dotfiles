@@ -20,6 +20,7 @@ alias \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
         rmd="rmdir -pv" \
+        doomsync="$HOME/.emacs.d/bin/doom/sync" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
@@ -28,7 +29,7 @@ alias \
         ga="g add" \
         gf="g fetch" \
         gs="g status" \
-        gc="g commit" \
+        gcl="g clone" \
         gpl="g pull" \
         gps="g push" \
         gud="gf; gs" \
@@ -36,7 +37,7 @@ alias \
 	confa="conf add" \
 	conff="conf fetch" \
 	confs="conf status" \
-	confc="conf commit -a" \
+	confcm="conf commit -a" \
 	confpl="conf pull" \
 	confps="conf push" \
 	confud="conff; confs" \
