@@ -12,7 +12,7 @@ done
 alias \
 	bup="sudo timeshift --create" \
         res="sudo timeshift --restore" \
-	upg="yay -Syu || sudo pacman -Syu" \
+	upg="paru -Syu" \
 	clr="clear" \
 	bat="cat /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
