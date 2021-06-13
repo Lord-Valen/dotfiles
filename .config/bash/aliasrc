@@ -20,7 +20,7 @@ alias \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
         rmd="rmdir -pv" \
-        doomsync="$HOME/.emacs.d/bin/doom/sync" \
+        doomsync="$HOME/.emacs.d/bin/doom sync" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
