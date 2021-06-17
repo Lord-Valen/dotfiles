@@ -9,22 +9,24 @@
 - [[#lexical-binding][Lexical Binding]]
 - [[#name-and-email][Name and Email]]
 - [[#fonts][Fonts]]
+- [[#word-wrap][Word-wrap]]
 - [[#org-mode][Org Mode]]
   - [[#add-preamble-to-new-orgmode-files][Add Preamble to New Orgmode Files]]
+- [[#irc][IRC]]
+  - [[#general-settings][General Settings.]]
+  - [[#truncation][Truncation]]
 
 * About this Config
 This is the DOOM Emacs configuration of Lord Valen:
 [[https://gitlab.com/Lord_Valen][Gitlab]]
 
-Emacs is my IDE of choice but I'm still a Vim user! This config uses evil mode and some cosmetic plugins for your viewing pleasure.
+Emacs is my IDE of choice but I'm still a Vim user! This config uses evil mode and some cosmetic plugins for your viewing pleasure. If you're going to be using ERC, make sure you change the nickname in the ERC section!
 
 * Lexical Binding
 Enable lexical binding
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
-
-#+RESULTS:
 
 * Name and Email
 Username and email. Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
@@ -65,6 +67,14 @@ Set fonts and font sizes.
 (setq global-prettify-symbols-mode t)
 #+end_src
 
+* Word-wrap
+Enable word-wrap (almost) everywhere.
+
+#+begin_src emacs-lisp
+(+global-word-wrap-mode +1)
+(+word-wrap-extra-indent single)
+#+end_src
+
 * Org Mode
 ** Add Preamble to New Orgmode Files
 Sets a preamble for Org files to save time. Stolen from [[https://github.com/LiquidZulu/.doom.d][LiquidZulu]].
@@ -97,4 +107,20 @@ Sets a preamble for Org files to save time. Stolen from [[https://github.com/Liq
                        (goto-line 1)
                        (forward-word)
                        (forward-char)))))))
+#+end_src
+
+* IRC
+Configuration for the IRC Client.
+
+** General Settings.
+#+begin_src emacs-lisp
+(load "~/.doom.d/IRC.el")
+#+end_src
+
+** Truncation
+#+begin_src emacs-lisp
+(defvar erc-insert-post-hook)
+(add-hook 'erc-insert-post-hook
+          'erc-truncate-buffer)
+(setq erc-truncate-buffer-on-save t)
 #+end_src
