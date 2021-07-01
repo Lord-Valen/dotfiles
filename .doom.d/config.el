@@ -31,6 +31,45 @@
 ;; changes certain keywords to symbols, such as lamda!
 (setq global-prettify-symbols-mode t)
 
+(setq creds "~/.doom.d/creds.el")
+(setq nick "lord_valen")
+
+(defun pass (server)
+             (with-temp-buffer
+               (insert-file-contents-literally creds)
+               (plist-get (read (buffer-string)) :pass)))
+
+(setq circe-network-options
+      '(("Freenode" :host "chat.freenode.net" :port (6667 . 6697)
+         :tls t
+         :nick nick
+         :sasl-username nick
+         :sasl-password pass
+         :channels (
+                    "#philosophy"
+                    "#idleRPG"
+                    "#physics"
+                    "#science"
+                    "#emacs"
+                    "#"
+                    )
+
+         )))
+
+(setq circe-format-say "{nick:-16s}> {body}")
+(setq circe-format-self-say "{nick:-16s}> {body}")
+(setq circe-format-message "{nick:-16s} => {chattarget}> {body}")
+(setq circe-format-self-message "{nick:-16s} => {chattarget}> {body}")
+
+(add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+(defun my-circe-prompt ()
+  (lui-set-prompt
+   (concat (propertize (concat (buffer-name) ">")
+                       'face 'circe-prompt-face)
+           " ")))
+
+(setq circe-reduce-lurker-spam t)
+
 (setq
  org-css "file:///e:/emacs/documents/org-css/css/org.css")
 (setq

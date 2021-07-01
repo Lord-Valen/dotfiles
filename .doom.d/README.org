@@ -3,18 +3,20 @@
 #+DATE:         June 12, 2021
 #+DESCRIPTION:  Lord Valen's DOOM config
 #+PROPERTY:     header-args :tangle config.el
+#+auto_tangle:  t
 
 * Table of Contents :TOC:
 - [[#about-this-config][About this Config]]
 - [[#lexical-binding][Lexical Binding]]
 - [[#name-and-email][Name and Email]]
 - [[#fonts][Fonts]]
-- [[#word-wrap][Word-wrap]]
 - [[#org-mode][Org Mode]]
   - [[#add-preamble-to-new-orgmode-files][Add Preamble to New Orgmode Files]]
 - [[#irc][IRC]]
-  - [[#general-settings][General Settings.]]
-  - [[#truncation][Truncation]]
+  - [[#credential-management][Credential management]]
+  - [[#circe-network-options][Circe Network Options]]
+  - [[#circe-format][Circe Format]]
+  - [[#filter][Filter]]
 
 * About this Config
 This is the DOOM Emacs configuration of Lord Valen:
@@ -67,14 +69,6 @@ Set fonts and font sizes.
 (setq global-prettify-symbols-mode t)
 #+end_src
 
-* Word-wrap
-Enable word-wrap (almost) everywhere.
-
-#+begin_src emacs-lisp
-(+global-word-wrap-mode +1)
-(+word-wrap-extra-indent single)
-#+end_src
-
 * Org Mode
 ** Add Preamble to New Orgmode Files
 Sets a preamble for Org files to save time. Stolen from [[https://github.com/LiquidZulu/.doom.d][LiquidZulu]].
@@ -112,15 +106,58 @@ Sets a preamble for Org files to save time. Stolen from [[https://github.com/Liq
 * IRC
 Configuration for the IRC Client.
 
-** General Settings.
+** Credential management
+Set some variables and keep my secrets secret.
 #+begin_src emacs-lisp
-(load "~/.doom.d/IRC.el")
+(setq creds "~/.doom.d/creds.el")
+(setq nick "lord_valen")
+
+(defun pass (server)
+             (with-temp-buffer
+               (insert-file-contents-literally creds)
+               (plist-get (read (buffer-string)) :pass)))
 #+end_src
 
-** Truncation
+** Circe Network Options
 #+begin_src emacs-lisp
-(defvar erc-insert-post-hook)
-(add-hook 'erc-insert-post-hook
-          'erc-truncate-buffer)
-(setq erc-truncate-buffer-on-save t)
+(setq circe-network-options
+      '(("Freenode" :host "chat.freenode.net" :port (6667 . 6697)
+         :tls t
+         :nick nick
+         :sasl-username nick
+         :sasl-password pass
+         :channels (
+                    "#philosophy"
+                    "#idleRPG"
+                    "#physics"
+                    "#science"
+                    "#emacs"
+                    "#"
+                    )
+
+         )))
+#+end_src
+
+** Circe Format
+*** Messages
+#+begin_src emacs-lisp
+(setq circe-format-say "{nick:-16s}> {body}")
+(setq circe-format-self-say "{nick:-16s}> {body}")
+(setq circe-format-message "{nick:-16s} => {chattarget}> {body}")
+(setq circe-format-self-message "{nick:-16s} => {chattarget}> {body}")
+#+end_src
+
+*** Prompt
+#+begin_src emacs-lisp
+(add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+(defun my-circe-prompt ()
+  (lui-set-prompt
+   (concat (propertize (concat (buffer-name) ">")
+                       'face 'circe-prompt-face)
+           " ")))
+#+end_src
+
+** Filter
+#+begin_src emacs-lisp
+(setq circe-reduce-lurker-spam t)
 #+end_src

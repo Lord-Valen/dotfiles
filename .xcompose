@@ -1,0 +1,18 @@
+# Include the system locale compose file
+include "%L"
+
+# Key sequences
+## Generate π
+<Multi_key> <p> <i>     : U03C0 # U03C0 PI
+<Multi_key> <P> <I>     : U03C0 # U03C0 PI
+
+## Generate ∞
+<Multi_key> <i> <n> <f> : U221E # U221E infinity
+<Multi_key> <I> <N> <F> : U221E # U221E infinity
+
+## Generate ⸮
+<Multi_key> </> <?>     : U2E2E # U2E2E irony punctuation (reversed ?)
+<Multi_key> <?> </>     : U2E2E # U2E2E irony punctuation (reversed ?)
+
+## Generate ⁂
+<Multi_key> <3> <*>     : U2042 # U2042 asterism
