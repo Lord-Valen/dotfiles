@@ -45,7 +45,9 @@ alias \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	f="$FILE" \
-	e="$EDITOR"
+	e="$EDITOR" \
+        vmu="sv up libvirtd virtlogd virtlockd" \
+        vmd="sv down libvirtd virtlogd virtlockd"
 
 # Runs zathura independently.
 z () {
