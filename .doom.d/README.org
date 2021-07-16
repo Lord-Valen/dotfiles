@@ -12,6 +12,7 @@
 - [[#fonts][Fonts]]
 - [[#org-mode][Org Mode]]
   - [[#add-preamble-to-new-orgmode-files][Add Preamble to New Orgmode Files]]
+  - [[#export-settings][Export Settings]]
 - [[#irc][IRC]]
   - [[#credential-management][Credential management]]
   - [[#circe-network-options][Circe Network Options]]
@@ -73,7 +74,7 @@ Set fonts and font sizes.
 ** Add Preamble to New Orgmode Files
 Sets a preamble for Org files to save time. Stolen from [[https://github.com/LiquidZulu/.doom.d][LiquidZulu]].
 
-#+begin_src elisp
+#+begin_src emacs-lisp
 (setq
  org-css "file:///e:/emacs/documents/org-css/css/org.css")
 (setq
@@ -101,6 +102,37 @@ Sets a preamble for Org files to save time. Stolen from [[https://github.com/Liq
                        (goto-line 1)
                        (forward-word)
                        (forward-char)))))))
+#+end_src
+
+** Export Settings
+#+begin_src emacs-lisp
+(setq org-export-headline-levels 5)
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+#+end_src
+#+begin_src emacs-lisp
+(after! org
+  ;; Import ox-latex to get org-latex-classes and other funcitonality
+  ;; for exporting to LaTeX from org
+  (use-package! ox-latex
+    :init
+    ;; code here will run immediately
+    :config
+    ;; code here will run after the package is loaded
+    (setq org-latex-pdf-process
+          '("pdflatex -interaction nonstopmode -output-directory %o %f"
+            "bibtex %b"
+            "pdflatex -interaction nonstopmode -output-directory %o %f"
+            "pdflatex -interaction nonstopmode -output-directory %o %f"))
+    (setq org-latex-with-hyperref nil) ;; stop org adding hypersetup{author..} to latex export
+    ;; (setq org-latex-prefer-user-labels t)
+
+    ;; deleted unwanted file extensions after latexMK
+    (setq org-latex-logfiles-extensions
+          (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
+
+    (unless (boundp 'org-latex-classes)
+      (setq org-latex-classes nil))))
 #+end_src
 
 * IRC

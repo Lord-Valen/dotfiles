@@ -31,6 +31,61 @@
 ;; changes certain keywords to symbols, such as lamda!
 (setq global-prettify-symbols-mode t)
 
+(setq
+ org-css "file:///e:/emacs/documents/org-css/css/org.css")
+(setq
+ org-preamble (format
+               "#+TITLE:\n#+AUTHOR:Lord Valen\n/This file is best viewed in [[https://www.gnu.org/software/emacs/][emacs]]!/"
+               org-css))
+
+(add-hook 'find-file-hook
+          (lambda ()
+            (if
+                (string=
+                 (substring
+                  (buffer-name)
+                  (if (> (length (buffer-name)) 3) (- (length (buffer-name)) 3) 0)
+                  nil)
+                 "org")
+                (if
+                    (=
+                     (buffer-size)
+                     0)
+                    ((lambda ()
+                       (insert org-preamble)
+
+                                        ; navigate point to end of #+TITLE:, doesnt work when launching from gitbash for some reason, point just moves right back down after doom does something
+                       (goto-line 1)
+                       (forward-word)
+                       (forward-char)))))))
+
+(setq org-export-headline-levels 5)
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+
+(after! org
+  ;; Import ox-latex to get org-latex-classes and other funcitonality
+  ;; for exporting to LaTeX from org
+  (use-package! ox-latex
+    :init
+    ;; code here will run immediately
+    :config
+    ;; code here will run after the package is loaded
+    (setq org-latex-pdf-process
+          '("pdflatex -interaction nonstopmode -output-directory %o %f"
+            "bibtex %b"
+            "pdflatex -interaction nonstopmode -output-directory %o %f"
+            "pdflatex -interaction nonstopmode -output-directory %o %f"))
+    (setq org-latex-with-hyperref nil) ;; stop org adding hypersetup{author..} to latex export
+    ;; (setq org-latex-prefer-user-labels t)
+
+    ;; deleted unwanted file extensions after latexMK
+    (setq org-latex-logfiles-extensions
+          (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
+
+    (unless (boundp 'org-latex-classes)
+      (setq org-latex-classes nil))))
+
 (setq creds "~/.doom.d/creds.el")
 (setq nick "lord_valen")
 
@@ -69,31 +124,3 @@
            " ")))
 
 (setq circe-reduce-lurker-spam t)
-
-(setq
- org-css "file:///e:/emacs/documents/org-css/css/org.css")
-(setq
- org-preamble (format
-               "#+TITLE:\n#+AUTHOR:Lord Valen\n/This file is best viewed in [[https://www.gnu.org/software/emacs/][emacs]]!/"
-               org-css))
-
-(add-hook 'find-file-hook
-          (lambda ()
-            (if
-                (string=
-                 (substring
-                  (buffer-name)
-                  (if (> (length (buffer-name)) 3) (- (length (buffer-name)) 3) 0)
-                  nil)
-                 "org")
-                (if
-                    (=
-                     (buffer-size)
-                     0)
-                    ((lambda ()
-                       (insert org-preamble)
-
-                                        ; navigate point to end of #+TITLE:, doesnt work when launching from gitbash for some reason, point just moves right back down after doom does something
-                       (goto-line 1)
-                       (forward-word)
-                       (forward-char)))))))
