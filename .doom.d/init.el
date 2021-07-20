@@ -76,7 +76,7 @@
        ;;eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       ;;vterm             ; the best terminal emulation in Emacs
+       vterm             ; the best terminal emulation in Emacs
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
@@ -112,7 +112,7 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
-       ;;cc                ; C > C++ == 1
+       cc                ; C > C++ == 1
        ;;clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
@@ -152,7 +152,7 @@
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        python            ; beautiful is better than ugly
-       ;;qt                ; the 'cutest' gui framework ever
+       qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
@@ -184,5 +184,5 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       ;;literate
+       literate
        (default +bindings +smartparens))
