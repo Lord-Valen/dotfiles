@@ -54,6 +54,11 @@ z () {
 	zathura $* & disown
 }
 
+# sv, but for user services.
+usv () {
+        env SVDIR=$HOME/.local/sv sv "$@"
+}
+
 # Adds color to commands.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
