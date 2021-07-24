@@ -1,27 +1,33 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq user-full-name "Lord Valen"
-      user-mail-address "lord_valen@pm.me")
+      user-mail-address "lord_valen@pm.me"
+      )
 
 (set-face-attribute 'default nil
   :font "Inconsolata Nerd Font Mono"
   :height 120
-  :weight 'medium)
+  :weight 'medium
+  )
 (set-face-attribute 'variable-pitch nil
   :font "Inconsolata Nerd Font"
   :height 120
-  :weight 'medium)
+  :weight 'medium
+  )
 (set-face-attribute 'fixed-pitch nil
   :font "Inconsolata Nerd Font Mono"
   :height 120
-  :weight 'medium)
+  :weight 'medium
+  )
 
 ;; Makes commented text and keywords italics.
 ;; Your font must have an italic face available.
 (set-face-attribute 'font-lock-comment-face nil
-  :slant 'italic)
+  :slant 'italic
+  )
 (set-face-attribute 'font-lock-keyword-face nil
-  :slant 'italic)
+  :slant 'italic
+  )
 
 ;; Adjust line spacing.
 ;;(setq-default line-spacing 0.12)
@@ -41,7 +47,8 @@
 (setq
  org-preamble (format
                "#+TITLE:\n#+AUTHOR:Lord Valen\n/This file is best viewed in [[https://www.gnu.org/software/emacs/][emacs]]!/"
-               org-css))
+               org-css)
+ )
 
 (add-hook 'find-file-hook
           (lambda ()
@@ -62,7 +69,13 @@
                                         ; navigate point to end of #+TITLE:, doesnt work when launching from gitbash for some reason, point just moves right back down after doom does something
                        (goto-line 1)
                        (forward-word)
-                       (forward-char)))))))
+                       (forward-char)
+                       )
+                     )
+                  )
+              )
+            )
+          )
 
 (setq org-export-headline-levels 5)
 (require 'ox-extra)
@@ -79,18 +92,40 @@
         '("pdflatex -interaction nonstopmode -output-directory %o %f"
           "bibtex %b"
           "pdflatex -interaction nonstopmode -output-directory %o %f"
-          "pdflatex -interaction nonstopmode -output-directory %o %f"))
+          "pdflatex -interaction nonstopmode -output-directory %o %f")
+        )
   (setq org-latex-with-hyperref nil) ;; stop org adding hypersetup{author..} to latex export
   ;; (setq org-latex-prefer-user-labels t)
 
   ;; deleted unwanted file extensions after latexMK
   (setq org-latex-logfiles-extensions
-        (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
+        (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist"))
+        )
 
   (unless (boundp 'org-latex-classes)
-    (setq org-latex-classes nil)))
+    (setq org-latex-classes nil)
+    )
+  )
 
 )
+
+(setq org-roam-directory (file-truename "~/documents/org/org-roam"))
+(after! org-roam
+  (org-roam-setup)
+  )
+
+(defun episteme:ensure-org-id ()
+  (interactive)
+  (when (s-starts-with? org-roam-directory (buffer-file-name))
+    (save-excursion
+      (beginning-of-buffer)
+      (org-id-get-create)
+      )
+    )
+  )
+
+(:hook org-mode
+    (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
 
 (setq creds "~/.doom.d/creds.el")
 (setq nick "lord_valen")
@@ -114,8 +149,9 @@
                     "#emacs"
                     "#"
                     )
-
-         )))
+         )
+        )
+      )
 
 (setq circe-format-say "{nick:-16s}> {body}")
 (setq circe-format-self-say "{nick:-16s}> {body}")
@@ -127,6 +163,8 @@
   (lui-set-prompt
    (concat (propertize (concat (buffer-name) ">")
                        'face 'circe-prompt-face)
-           " ")))
+           " ")
+   )
+  )
 
 (setq circe-reduce-lurker-spam t)
