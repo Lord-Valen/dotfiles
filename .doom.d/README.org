@@ -3,7 +3,6 @@
 #+DATE:         June 12, 2021
 #+DESCRIPTION:  Lord Valen's DOOM config
 #+PROPERTY:     header-args :tangle config.el
-#+auto_tangle:  t
 
 * Table of Contents :TOC:
 - [[#about-this-config][About this Config]]
@@ -17,6 +16,7 @@
   - [[#export-settings][Export Settings]]
   - [[#backmatter][Backmatter]]
 - [[#org-roam][Org-Roam]]
+- [[#format][Format]]
 - [[#irc][IRC]]
   - [[#credential-management][Credential management]]
   - [[#circe-network-options][Circe Network Options]]
@@ -176,9 +176,6 @@ Close the (after! org) wrap.
 * Org-Roam
 #+begin_src emacs-lisp
 (setq org-roam-directory (file-truename "~/documents/org/org-roam"))
-(after! org-roam
-  (org-roam-setup)
-  )
 
 (defun episteme:ensure-org-id ()
   (interactive)
@@ -190,8 +187,20 @@ Close the (after! org) wrap.
     )
   )
 
-(:hook org-mode
-    (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
+(add-hook 'org-mode-hook
+    (lambda () (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
+    )
+#+end_src
+
+* Format
+Config for Doom's format package.
+#+begin_src emacs-lisp
+(setq format-on-save-enabled-modes
+      '(not emacs-lisp-mode
+            sql-mode
+            tex-mode
+            latex-mode
+        ))
 #+end_src
 
 * IRC

@@ -110,9 +110,6 @@
 )
 
 (setq org-roam-directory (file-truename "~/documents/org/org-roam"))
-(after! org-roam
-  (org-roam-setup)
-  )
 
 (defun episteme:ensure-org-id ()
   (interactive)
@@ -124,8 +121,16 @@
     )
   )
 
-(:hook org-mode
-    (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
+(add-hook 'org-mode-hook
+    (lambda () (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
+    )
+
+(setq format-on-save-enabled-modes
+      '(not emacs-lisp-mode
+            sql-mode
+            tex-mode
+            latex-mode
+        ))
 
 (setq creds "~/.doom.d/creds.el")
 (setq nick "lord_valen")
