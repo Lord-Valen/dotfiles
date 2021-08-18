@@ -4,6 +4,13 @@
       user-mail-address "lord_valen@pm.me"
       )
 
+(use-package! evil-colemak-basics
+  :init
+  (setq evil-colemak-basics-layout-mod `mod-dh)
+  :config
+  (global-evil-colemak-basics-mode)
+  )
+
 (set-face-attribute 'default nil
   :font "Inconsolata Nerd Font Mono"
   :height 120

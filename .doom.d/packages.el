@@ -6,3 +6,4 @@
 ;; use 'M-x doom/reload'.
 (package! circe)
 (package! org-auto-tangle)
+(package! evil-colemak-basics)
