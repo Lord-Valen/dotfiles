@@ -33,7 +33,7 @@ noremap M H
 noremap n j
 noremap N J
 noremap e k
-noremap e K
+noremap E K
 noremap i l
 noremap I L
 
@@ -44,7 +44,6 @@ noremap U I
 noremap l u
 noremap L U
 noremap N J
-noremap E K
 
 noremap f e
 noremap F E
