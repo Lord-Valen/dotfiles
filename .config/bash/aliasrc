@@ -59,6 +59,12 @@ usv () {
         env SVDIR=$HOME/.local/sv sv "$@"
 }
 
+# emacsclient
+emacsd () {
+        export EMACS_SOCKET_NAME=/tmp/emacs1000/"$USER"-emacsd
+        /usr/bin/emacsclient -c -n
+}
+
 # Adds color to commands.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
