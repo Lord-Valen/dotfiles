@@ -11,7 +11,7 @@ done
 # Adds verbosity where we like it and shortens common commands.
 alias \
 	bup="sudo timeshift --create" \
-        res="sudo timeshift --restore" \
+    res="sudo timeshift --restore" \
 	upg="paru -Syu" \
 	clr="clear" \
 	bat="cat /sys/class/power_supply/BAT?/capacity" \
@@ -19,20 +19,20 @@ alias \
 	mv="mv -iv" \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
-        rmd="rmdir -pv" \
-        doomsync="$HOME/.emacs.d/bin/doom sync" \
+    rmd="rmdir -pv" \
+    doomsync="$HOME/.emacs.d/bin/doom sync" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
   	ka="killall" \
 	g="git" \
-        ga="g add" \
-        gf="g fetch" \
-        gs="g status" \
-        gcl="g clone" \
-        gpl="g pull" \
-        gps="g push" \
-        gud="gf; gs" \
+    ga="g add" \
+    gf="g fetch" \
+    gs="g status" \
+    gcl="g clone" \
+    gpl="g pull" \
+    gps="g push" \
+    gud="gf; gs" \
 	conf="g --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
 	confa="conf add" \
 	conff="conf fetch" \
@@ -41,13 +41,13 @@ alias \
 	confpl="conf pull" \
 	confps="conf push" \
 	confud="conff; confs" \
-        p="pacman" \
+    p="pacman" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	f="$FILE" \
 	e="$EDITOR" \
-        vmu="sv up libvirtd virtlogd virtlockd" \
-        vmd="sv down libvirtd virtlogd virtlockd"
+    vmu="sv up libvirtd virtlogd virtlockd" \
+    vmd="sv down libvirtd virtlogd virtlockd"
 
 # Runs zathura independently.
 z () {
@@ -57,12 +57,6 @@ z () {
 # sv, but for user services.
 usv () {
         env SVDIR=$HOME/.local/sv sv "$@"
-}
-
-# emacsclient
-emacsd () {
-        export EMACS_SOCKET_NAME=/tmp/emacs1000/"$USER"-emacsd
-        /usr/bin/emacsclient -c -n
 }
 
 # Adds color to commands.

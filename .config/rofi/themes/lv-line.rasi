@@ -1,53 +1,45 @@
+/*-*- mode: css; -*-*/
 /*
  * ROFI Color theme
- * NAME: lv-line.rasi
- * DESCRIPTION: Horizontal prompt similar to dmenu.
- * AUTHOR: lord-valen
+ * User: lord-valen
  */
 
 * {
-    background-color:           #282c34;
-    border-color:               #282c34;
-    text-color:                 #bbc2cf;
-    height:                     20px;
-    font:                       "Literation Nerd Font Mono 12";
-    prompt-font:                "Literation Nerd Font Bold 12";
-    prompt-background:          #51afef;
-    prompt-foreground:          #282c34;
-    prompt-padding:             2px;
-    selected-normal-background: #ae3f3e;
-    selected-normal-foreground: #ffffff;
+    background-color:          #343434;
+    selected-background-color: #e92f2f;
+    border-color:              black;
+    text-color:                white;
+    font:                      "Literation Nerd Font 12";
 }
-#window {
-    anchor: north;
+window {
+    anchor:   north;
     location: north;
-    width: 100%;
-    padding: 0px;
+    width:    100%;
+    padding:  4px;
     children: [ horibox ];
 }
-#horibox {
+horibox {
     orientation: horizontal;
-    children: [ prompt, entry, listview ];
+    children:    [ prompt, entry, listview ];
 }
-#prompt {
-    padding:          @prompt-padding;
-    background-color: @prompt-background;
-    text-color:       @prompt-foreground;
-    font:             @prompt-font;
+prompt {
 }
-#listview {
-    layout: horizontal;
-    lines: 100;
-}
-#entry {
-    padding: 2px;
+entry {
     expand: false;
-    width: 10em;
+    width:  10em;
 }
-#element {
-    padding: 2px 8px;
+listview {
+    layout:  horizontal;
+    spacing: 5px;
+    lines:   100;
 }
-#element selected {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
+element {
+    padding: 0px 2px;
+}
+element selected {
+    background-color: @selected-background-color;
+}
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
 }

@@ -3,7 +3,7 @@
 
 # Variables
 set $mod Mod4
-set $EDITOR nvim
+set $EDITOR emacsd
 set $TERMINAL tabbed -c alacritty --embed
 set $BROWSER brave
 set $BROWSER0 tabbed -c vimb -e
@@ -15,9 +15,7 @@ font pango:monospace 10
 #font pango:DejaVu Sans Mono 8
 
 # Autostart some stuff
-#exec --no-startup-id $TERMINAL -e newsboat
 exec --no-startup-id feh --no-fehbg --bg-scale -z ~/.config/wallpaper/*
-exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -48,16 +46,16 @@ bindsym $mod+Shift+q kill
 # Xkill
 bindsym --release $mod+Shift+k exec xkill
 
-# Start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run
-# To use rofi:
-# bindsym $mod+d exec "rofi -modi drun,run -show drun"
-# To use i3-dmenu-desktop:
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# Start rofi:
+bindsym $mod+d exec "rofi -show run"
+
 
 # Start browser
 bindsym $mod+b exec $BROWSER
 bindsym $mod+Shift+b exec $BROWSER0
+
+# Start editor
+bindsym $mod+a exec $EDITOR
 
 # Mouse focus.
 focus_follows_mouse no
@@ -94,10 +92,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # Focus the child container
-bindsym $mod+z focus child
+bindsym $mod+c focus child
 
 # Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -160,10 +158,10 @@ bindsym --release Control+Shift+Print exec "scrot -sz ~/shots/selectshot%Y-%m-%d
 # Resize mode
 mode "resize" {
         # Bindings for resize mode
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+        bindsym $left  resize shrink width 10 px or 10 ppt
+        bindsym $down  resize grow height 10 px or 10 ppt
+        bindsym $up    resize shrink height 10 px or 10 ppt
+        bindsym $right resize grow width 10 px or 10 ppt
 
         # Back to normal
         bindsym Return mode "default"

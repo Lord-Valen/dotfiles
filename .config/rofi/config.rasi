@@ -1,3 +1,7 @@
 configuration {
-        theme: "~/.config/rofi/themes/shapeshifter.rasi";
+              modi: "run,drun,ssh";
+              matching: "fuzzy";
+              sort: true;
+              sorting-method: "fzf";
+              theme: "~/.config/rofi/themes/lv-line.rasi";
 }
