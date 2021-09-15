@@ -4,6 +4,22 @@
       user-mail-address "lord_valen@pm.me"
       )
 
+(defmacro :hook (hook-name &rest body)
+  "A simple wrapper around `add-hook'"
+  (declare (indent defun))
+  (let* ((hook-name (format "%s-hook" (symbol-name hook-name)))
+         (hook-sym (intern hook-name))
+         (first (car body))
+         (local (eq :local first))
+         (body (if local (cdr body) body))
+         (first (car body))
+         (body (if (consp first)
+                   (if (eq (car first) 'quote)
+                       first
+                     `(lambda () ,@body))
+                 `',first)))
+    `(add-hook ',hook-sym ,body nil ,local)))
+
 (use-package! evil-colemak-basics
   :init
   (setq evil-colemak-basics-layout-mod `mod-dh)
@@ -49,41 +65,6 @@
 (setq org-directory "~/documents/org/")
 (setq org-agenda-files '("~/documents/org/agenda.org"))
 
-(setq
- org-css "file:///e:/emacs/documents/org-css/css/org.css")
-(setq
- org-preamble (format
-               "#+TITLE:\n#+AUTHOR:Lord Valen\n/This file is best viewed in [[https://www.gnu.org/software/emacs/][emacs]]!/"
-               org-css)
- )
-
-(add-hook 'find-file-hook
-          (lambda ()
-            (if
-                (string=
-                 (substring
-                  (buffer-name)
-                  (if (> (length (buffer-name)) 3) (- (length (buffer-name)) 3) 0)
-                  nil)
-                 "org")
-                (if
-                    (=
-                     (buffer-size)
-                     0)
-                    ((lambda ()
-                       (insert org-preamble)
-
-                                        ; navigate point to end of #+TITLE:, doesnt work when launching from gitbash for some reason, point just moves right back down after doom does something
-                       (goto-line 1)
-                       (forward-word)
-                       (forward-char)
-                       )
-                     )
-                  )
-              )
-            )
-          )
-
 (setq org-export-headline-levels 5)
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
@@ -116,7 +97,26 @@
 
 )
 
+(after! org-roam
 (setq org-roam-directory (file-truename "~/documents/org/org-roam"))
+
+(cl-defmethod org-roam-node-slug ((node org-roam-node))
+  (let ((title (org-roam-node-title node)))
+    (cl-flet* ((nonspacing-mark-p (char)
+                                  (memq char org-roam-slug-trim-chars))
+               (strip-nonspacing-marks (s)
+                                       (ucs-normalize-NFC-string
+                                        (apply #'string (seq-remove #'nonspacing-mark-p
+                                                                    (ucs-normalize-NFD-string s)))))
+               (cl-replace (title pair)
+                           (replace-regexp-in-string (car pair) (cdr pair) title)))
+      (let* ((pairs `(("[^[:alnum:][:digit:]]" . "-")
+                      ("--*" . "-")
+                      ("^-" . "")
+                      ("-$" . "")))
+             (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
+        (downcase slug)))))
+)
 
 (defun episteme:ensure-org-id ()
   (interactive)
@@ -128,9 +128,8 @@
     )
   )
 
-(add-hook 'org-mode-hook
-    (lambda () (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
-    )
+(:hook org-mode
+    (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
 
 (setq format-on-save-enabled-modes
       '(not emacs-lisp-mode

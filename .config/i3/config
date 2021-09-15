@@ -19,11 +19,14 @@ exec --no-startup-id feh --no-fehbg --bg-scale -z ~/.config/wallpaper/*
 exec --no-startup-id clipit
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id pasystray
+#exec --no-startup-id pasystray
 
 # Audio
-exec --no-startup-id pulseaudio
-bindsym $mod+Ctrl+m exec pavucontrol
+exec /usr/bin/pipewire
+exec /usr/bin/pipewire-pulse
+exec /usr/bin/pipewire-media-session
+#exec --no-startup-id pulseaudio
+bindsym $mod+Ctrl+m exec helvum
 
 # Use these keys for focus, movement, and resize directions
 set $left m
