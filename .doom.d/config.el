@@ -98,7 +98,7 @@
 )
 
 (after! org-roam
-(setq org-roam-directory (file-truename "~/documents/org/org-roam"))
+(setq org-roam-directory (file-truename "~/org-roam"))
 
 (cl-defmethod org-roam-node-slug ((node org-roam-node))
   (let ((title (org-roam-node-title node)))
