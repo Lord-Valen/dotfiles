@@ -4,4 +4,4 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export PATH="${PATH}:/home/lord-valen/.local/bin"
+export PATH="${PATH}:/home/lord-valen/.local/bin:/home/lord-valen/.emacs.d/bin"
