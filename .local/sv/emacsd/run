@@ -5,4 +5,4 @@ export PATH="$HOME/.local/bin:$PATH"
 
 cd "$HOME"
 
-exec /usr/bin/emacs --fg-daemon=$USER-emacsd
+exec /usr/bin/emacs --fg-daemon="$USER"-emacsd

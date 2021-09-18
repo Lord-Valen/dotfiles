@@ -1,2 +1,2 @@
 #!/bin/bash
-emacsclient -s /tmp/emacs1000/"$USER"-emacsd -c -n
+emacsclient -s "$USER"-emacsd -c -n
