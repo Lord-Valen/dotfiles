@@ -118,8 +118,8 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 
 ** Directories
 #+begin_src emacs-lisp
-(setq org-directory "~/documents/org/")
-(setq org-agenda-files '("~/documents/org/agenda.org"))
+(setq org-directory "~/org-roam/")
+(setq org-agenda-files '("~/org-roam/agenda.org"))
 #+end_src
 
 ** Export Settings
