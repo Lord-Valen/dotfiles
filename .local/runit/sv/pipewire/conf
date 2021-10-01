@@ -1,0 +1,14 @@
+# -*- mode: sh; -*-
+
+# Additional command line arguments
+OPTS=''
+
+# Set this to 1 to enable logging, any other value disables
+LOGGING_ENABLE=1
+
+# Set the pipewire log level.
+# See: https://docs.pipewire.org/page_daemon.html#sec_logging
+LOG_LEVEL=2
+
+# The directory will be created if logging is enabled
+LOG_DIR="$log/pipewire"

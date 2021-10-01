@@ -54,19 +54,24 @@ z () {
 	zathura $* & disown
 }
 
-# sv, but for user services.
+# sv, but for user services
 usv () {
-        env SVDIR=$HOME/.local/sv sv "$@"
+        env SVDIR=$HOME/.local/runit/sv sv "$@"
 }
 
-# Adds color to commands.
+# Useful sv shortcuts
+alias \
+    svs="sv s /run/runit/service/*" \
+    usvs="sv s $HOME/.local/runit/sv/*"
+
+# Add color to commands
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
 
-# Enables the `pauseallmpv` command.
+# Enable the `pauseallmpv` command
 alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
 
 # Some other stuff

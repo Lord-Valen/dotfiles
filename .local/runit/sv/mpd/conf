@@ -1,0 +1,10 @@
+# -*- mode: sh; -*-
+
+# Additional command line arguments
+OPTS=''
+
+# Setting to 1 to enable logging, any other value disables
+LOGGING_ENABLE=0
+
+# The directory will be created if logging is enabled
+LOG_DIR="$log/mpd"
