@@ -14,9 +14,12 @@
 - [[#org-mode][Org Mode]]
   - [[#preamble][Preamble]]
   - [[#directories][Directories]]
+  - [[#add-org-latex-packages][Add org-latex Packages]]
   - [[#export-settings][Export Settings]]
   - [[#backmatter][Backmatter]]
 - [[#org-roam][Org-Roam]]
+- [[#latex][Latex]]
+  - [[#custom-org-latex-classes][Custom org-latex Classes]]
 - [[#format][Format]]
 - [[#irc][IRC]]
   - [[#credential-management][Credential management]]
@@ -122,6 +125,11 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 (setq org-agenda-files '("~/org-roam/agenda.org"))
 #+end_src
 
+** Add org-latex Packages
+#+begin_src emacs-lisp
+(add-to-list 'org-latex-default-packages-alist
+             '("" "setspace"))
+#+end_src
 ** Export Settings
 #+begin_src emacs-lisp
 (setq org-export-headline-levels 5)
@@ -155,7 +163,6 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
     )
   )
 #+end_src
-
 ** Backmatter
 Close the (after! org) wrap.
 #+begin_src emacs-lisp
@@ -224,7 +231,45 @@ Close the (after! org) wrap.
 (:hook org-mode
     (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
 #+end_src
-
+* Latex
+** Custom org-latex Classes
+#+begin_src emacs-lisp
+(after! ox-latex
+        (add-to-list 'org-latex-classes
+             '("chicago"
+               "\\documentclass[letterpaper,12pt]{article}
+               \\usepackage[notes, backend=biber]{biblatex-chicago}
+               \\usepackage[margin=1in]{geometry}
+               \\doublespacing
+               \\makeatletter
+               \\renewcommand{\\maketitle}{
+                   \\begin{titlepage}
+                       \\begin{center}
+                           \\null
+                           \\vfill
+                           \\@title \\\\
+                           \\@subtitle \\\\
+                           \\vfill
+                           \\@author \\\\
+                           \\studentnum \\\\
+                           \\course \\\\
+                           \\coursenum \\\\
+                           \\coursesec \\\\
+                           \\instructor \\\\
+                           \\institution \\\\
+                           \\@date \\\\
+                           \\vfill
+                    \\end{center}
+                \\end{titlepage}
+                }
+                \\makeatother"
+                ("\\chapter{%s}" . "\\chapter*{%s}")
+                ("\\section{%s}" . "\\section*{%s}")
+                ("\\subsection{%s}" . "\\subsection*{%s}")
+                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+#+end_src
 * Format
 Config for Doom's format package.
 #+begin_src emacs-lisp

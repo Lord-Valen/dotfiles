@@ -1,10 +1,10 @@
 # -*- mode: sh; -*-
 
 # Additional command line arguments
-OPTS=''
+OPTS='/home/lord-valen/.config/mpd/mpd.conf'
 
 # Setting to 1 to enable logging, any other value disables
-LOGGING_ENABLE=0
+LOGGING_ENABLE=1
 
 # The directory will be created if logging is enabled
 LOG_DIR="$log/mpd"
