@@ -1,57 +1,41 @@
 #!/bin/bash
 
-# Use neovim for vim when possible.
+# Use neovim when possible
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Stop making me type sudo >:|
-for x in docker timeshift mount umount sv pacman updatedb poweroff reboot ; do
+for x in docker timeshift mount umount sv pacman updatedb poweroff shutdown reboot ; do
         alias $x="sudo $x"
 done
 
-# Adds verbosity where we like it and shortens common commands.
+# Adds verbosity and shorten common commands
 alias \
-	bup="sudo timeshift --create" \
+    bup="sudo timeshift --create" \
     res="sudo timeshift --restore" \
-	upg="paru -Syu" \
-	clr="clear" \
-	bat="cat /sys/class/power_supply/BAT?/capacity" \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -v" \
-	mkd="mkdir -pv" \
+    upg="paru -Syu" \
+    clr="clear" \
+    bat="cat /sys/class/power_supply/BAT?/capacity" \
+    cp="cp -iv" \
+    mv="mv -iv" \
+    rm="rm -v" \
+    mkd="mkdir -pv" \
     rmd="rmdir -pv" \
     doomsync="$HOME/.emacs.d/bin/doom sync" \
-	yt="youtube-dl --add-metadata -i" \
-	yta="yt -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner" \
-  	ka="killall" \
-	g="git" \
-    ga="g add" \
-    gf="g fetch" \
-    gs="g status" \
-    gcl="g clone" \
-    gpl="g pull" \
-    gps="g push" \
-    gud="gf; gs" \
-	conf="g --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
-	confa="conf add" \
-	conff="conf fetch" \
-	confs="conf status" \
-	confcm="conf commit -a" \
-	confpl="conf pull" \
-	confps="conf push" \
-	confud="conff; confs" \
+    yt="youtube-dl --add-metadata -i" \
+    yta="yt -x -f bestaudio/best" \
+    ffmpeg="ffmpeg -hide_banner" \
+    ka="killall" \
+    g="git" \
+    conf="g --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
     p="pacman" \
-	trem="transmission-remote" \
-	YT="youtube-viewer" \
-	f="$FILE" \
-	e="$EDITOR" \
+    f="$FILE" \
+    e="$EDITOR" \
     vmu="sv up libvirtd virtlogd virtlockd" \
     vmd="sv down libvirtd virtlogd virtlockd"
 
 # Runs zathura independently.
 z () {
-	zathura $* & disown
+        zathura $* & disown
 }
 
 # sv, but for user services
@@ -66,15 +50,7 @@ alias \
 
 # Add color to commands
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi"
-
-# Enable the `pauseallmpv` command
-alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
-
-# Some other stuff
-alias \
-	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ~/.config/shortcutrc"
+    ls="ls -hN --color=auto --group-directories-first" \
+    grep="grep --color=auto" \
+    diff="diff --color=auto" \
+    ccat="highlight --out-format=ansi"

@@ -128,7 +128,7 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 ** Add org-latex Packages
 #+begin_src emacs-lisp
 (add-to-list 'org-latex-default-packages-alist
-             '("" "setspace"))
+             '("" "setspace" nil))
 #+end_src
 ** Export Settings
 #+begin_src emacs-lisp
@@ -237,32 +237,38 @@ Close the (after! org) wrap.
 (after! ox-latex
         (add-to-list 'org-latex-classes
              '("chicago"
-               "\\documentclass[letterpaper,12pt]{article}
-               \\usepackage[notes, backend=biber]{biblatex-chicago}
-               \\usepackage[margin=1in]{geometry}
-               \\doublespacing
-               \\makeatletter
-               \\renewcommand{\\maketitle}{
-                   \\begin{titlepage}
-                       \\begin{center}
-                           \\null
-                           \\vfill
-                           \\@title \\\\
-                           \\@subtitle \\\\
-                           \\vfill
-                           \\@author \\\\
-                           \\studentnum \\\\
-                           \\course \\\\
-                           \\coursenum \\\\
-                           \\coursesec \\\\
-                           \\instructor \\\\
-                           \\institution \\\\
-                           \\@date \\\\
-                           \\vfill
-                    \\end{center}
-                \\end{titlepage}
-                }
-                \\makeatother"
+"\\documentclass[letterpaper,12pt]{article}
+[DEFAULT-PACKAGES]
+\\usepackage[notes, backend=biber]{biblatex-chicago}
+\\usepackage[margin=1in]{geometry}
+\\doublespacing
+\\makeatletter
+\\def\\studentnum#1{\\gdef\\@studentnum{#1}}
+\\def\\course#1{\\gdef\\@course{#1}}
+\\def\\coursenum#1{\\gdef\\@coursenum{#1}}
+\\def\\coursesec#1{\\gdef\\@coursesec{#1}}
+\\def\\instructor#1{\\gdef\\@instructor{#1}}
+\\def\\institution#1{\\gdef\\@institution{#1}}
+\\renewcommand{\\maketitle}{
+\\begin{titlepage}
+\\begin{center}
+\\null
+\\vfill
+\\@title \\\\
+\\@subtitle \\\\
+\\vfill
+\\@author \\\\
+\\@studentnum \\\\
+\\@course \\\\
+\\@coursenum \\\\
+\\@coursesec \\\\
+\\@instructor \\\\
+\\@institution \\\\
+\\@date \\\\
+\\vfill
+\\end{center}
+\\end{titlepage}}
+\\makeatother"
                 ("\\chapter{%s}" . "\\chapter*{%s}")
                 ("\\section{%s}" . "\\section*{%s}")
                 ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -270,6 +276,10 @@ Close the (after! org) wrap.
                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 #+end_src
+
+#+RESULTS:
+| chicago | \documentclass[letterpaper,12pt]{article} |
+
 * Format
 Config for Doom's format package.
 #+begin_src emacs-lisp
