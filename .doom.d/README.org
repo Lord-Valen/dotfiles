@@ -253,7 +253,7 @@ Close the (after! org) wrap.
              '("chicago"
 "\\documentclass[letterpaper,12pt]{article}
 [DEFAULT-PACKAGES]
-\\usepackage[notes, backend=biber]{biblatex-chicago}
+\\usepackage[notes,backend=biber]{biblatex-chicago}
 \\usepackage[margin=1in]{geometry}
 \\doublespacing
 \\makeatletter
