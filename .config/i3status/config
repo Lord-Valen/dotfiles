@@ -21,7 +21,7 @@ order += "memory"
 order += "time"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip (%speed)"
+        format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
@@ -43,7 +43,7 @@ load {
 }
 
 memory {
-        format = "%free - %available - %used / %total"
+        format = "FAU/T: %free - %available - %used / %total"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
