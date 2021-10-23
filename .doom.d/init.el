@@ -14,6 +14,7 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+(defvar +literate-config-file "~/.doom.d/README.org")
 (doom! :input
        ;;chinese
        ;;japanese
@@ -21,9 +22,9 @@
 
        :completion
        company           ; the ultimate code completion backend
-       ;;helm              ; the *other* search engine for love and life
+       helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       ;;ivy               ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -48,7 +49,7 @@
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
+       ;;workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
        :editor
@@ -147,7 +148,7 @@
        ;;nim               ; python + lisp at the speed of c
        nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +roam)               ; organize your plain life in plain text
+       (org +roam2)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -179,7 +180,7 @@
        ;;calendar
        ;;emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
-       ;;irc               ; how neckbeards socialize
+       irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 

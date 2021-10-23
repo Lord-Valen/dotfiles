@@ -15,6 +15,7 @@
   - [[#preamble][Preamble]]
   - [[#directories][Directories]]
   - [[#add-org-latex-packages][Add org-latex Packages]]
+  - [[#org-ref][Org-ref]]
   - [[#export-settings][Export Settings]]
   - [[#backmatter][Backmatter]]
 - [[#org-roam][Org-Roam]]
@@ -28,8 +29,7 @@
   - [[#filter][Filter]]
 
 * About this Config
-This is the DOOM Emacs configuration of Lord Valen:
-[[https://gitlab.com/Lord_Valen][Gitlab]]
+This is the DOOM Emacs configuration of Lord Valen: [[https://gitlab.com/Lord_Valen][Gitlab]]
 
 Emacs is my IDE of choice but I'm still a Vim user! This config uses evil mode and some cosmetic plugins for your viewing pleasure. If you're going to be using ERC, make sure you change the nickname in the ERC section!
 
@@ -46,6 +46,7 @@ Username and email. Some functionality uses this to identify you, e.g. GPG confi
       user-mail-address "lord_valen@pm.me"
       )
 #+end_src
+
 * Macros
 #+begin_src emacs-lisp
 (defmacro :hook (hook-name &rest body)
@@ -62,7 +63,8 @@ Username and email. Some functionality uses this to identify you, e.g. GPG confi
                        first
                      `(lambda () ,@body))
                  `',first)))
-    `(add-hook ',hook-sym ,body nil ,local)))
+    `(add-hook ',hook-sym ,body nil ,local)
+    ))
 #+end_src
 
 * Colemak Evil
@@ -130,6 +132,38 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 (add-to-list 'org-latex-default-packages-alist
              '("" "setspace" nil))
 #+end_src
+
+** Org-ref
+#+begin_src emacs-lisp
+(use-package! org-ref
+    :after org
+    :init
+    :config
+    )
+
+(use-package! helm-bibtex
+  :init
+  :config
+  )
+
+(setq
+      ;org-ref-notes-directory (concatenate 'string org-directory "/org-ref")
+      org-ref-default-bibliography '("/home/lord-valen/Zotero/library.bib")
+      org-ref-pdf-directory "/home/lord-valen/Zotero/pdfs")
+
+(add-to-list 'org-capture-templates
+             '(("a"               ; key
+                "Article"         ; name
+                entry             ; type
+                                        ;(file+headline (concatenate 'string org-directory "/foo.org) "Article")  ; target
+                "\* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
+
+                :prepend t        ; properties
+                :empty-lines 1    ; properties
+                :created t        ; properties
+)))
+#+end_src
+
 ** Export Settings
 #+begin_src emacs-lisp
 (setq org-export-headline-levels 5)
@@ -238,20 +272,20 @@ Close the (after! org) wrap.
     (save-excursion
       (beginning-of-buffer)
       (org-id-get-create)
-      )
-    )
-  )
+      )))
 
 (:hook org-mode
-    (add-hook 'before-save-hook 'episteme:ensure-org-id nil t))
+    (add-hook 'before-save-hook 'episteme:ensure-org-id nil t)
+    )
 #+end_src
 * Latex
 ** Custom org-latex Classes
 #+begin_src emacs-lisp
 (after! ox-latex
         (add-to-list 'org-latex-classes
-             '("chicago"
-"\\documentclass[letterpaper,12pt]{article}
+             '(
+               "chicago"
+               "\\documentclass[letterpaper,12pt]{article}
 [DEFAULT-PACKAGES]
 \\usepackage[notes,backend=biber]{biblatex-chicago}
 \\usepackage[margin=1in]{geometry}
@@ -288,11 +322,9 @@ Close the (after! org) wrap.
                 ("\\subsection{%s}" . "\\subsection*{%s}")
                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+                )))
 #+end_src
-
-#+RESULTS:
-| chicago | \documentclass[letterpaper,12pt]{article} |
 
 * Format
 Config for Doom's format package.
@@ -358,8 +390,7 @@ Set some variables and keep my secrets secret.
    (concat (propertize (concat (buffer-name) ">")
                        'face 'circe-prompt-face)
            " ")
-   )
-  )
+   ))
 #+end_src
 
 ** Filter
