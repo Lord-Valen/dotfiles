@@ -8,6 +8,7 @@
 (package! org-auto-tangle)
 (package! evil-colemak-basics)
 (package! org-ref)
+(package! helm-bibtex)
 (package! gitconfig-mode
   :recipe (:host github :repo "magit/git-modes"
 			 :files ("gitconfig-mode.el")))
