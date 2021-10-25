@@ -228,13 +228,13 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
                  ))
   )
 
-(setq org-latex-pdf-process
-      '("pdflatex -interaction=nonstopmode -output-directory=%o %b"
-        "biber --output-directory %o %b"
-        "pdflatex -interaction=nonstopmode -output-directory=%o %b"))
 ;;(setq org-latex-pdf-process
-;;      '("latexmk -f -pdf -interaction=nonstopmode %f")
-;;      )
+;;      '("pdflatex -interaction=nonstopmode -output-directory=%o %b"
+;;        "vendor_perl/biber --output-directory %o %b"
+;;        "pdflatex -interaction=nonstopmode -output-directory=%o %b"))
+(setq org-latex-pdf-process
+      '("latexmk -f -pdf -interaction=nonstopmode %f")
+      )
 
 (setq org-latex-with-hyperref nil) ;; stop org adding hypersetup{author..} to latex export
 ;; (setq org-latex-prefer-user-labels t)
