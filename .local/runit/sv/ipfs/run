@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ ! -d $HOME/.ipfs ]; then
+    ipfs init
+fi
+
+exec ipfs daemon
