@@ -258,9 +258,7 @@ Close the (after! org) wrap.
              :config
              (setq org-roam-directory (file-truename "~/org-roam"))
 
-             (setq org-roam-extract-new-file-path "${slug}.org"
-               :group 'org-roam
-               :type 'string)
+             (setq org-roam-extract-new-file-path "${slug}.org")
 
              (cl-defmethod org-roam-node-slug ((node org-roam-node))
                (let ((title (org-roam-node-title node))
