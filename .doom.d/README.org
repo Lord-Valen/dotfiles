@@ -183,9 +183,12 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
                  "\\documentclass[letterpaper,12pt]{article}
 [DEFAULT-PACKAGES]
 \\usepackage{newtxtext}
+\\usepackage{url}
+\\usepackage{doi}
 \\usepackage[notes,backend=biber]{biblatex-chicago}
 \\usepackage[margin=1in]{geometry}
 \\doublespacing
+\\addbibresource{./library.bib}
 \\makeatletter
 \\newcommand\\@mymakefnmark{\\normalfont\\@thefnmark.\\hfill}
 \\renewcommand\\@makefntext[1]{%
@@ -258,6 +261,9 @@ Close the (after! org) wrap.
              :config
              (setq org-roam-directory (file-truename "~/org-roam"))
 
+             (setq org-roam-capture-templates '(("d" "default" plain "%?" :target
+                                                (file+head "${slug}.org" "#+TITLE: ${title}\n")
+                                                :unnarrowed t)))
              (setq org-roam-extract-new-file-path "${slug}.org")
 
              (cl-defmethod org-roam-node-slug ((node org-roam-node))
