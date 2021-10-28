@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d $HOME/.ipfs ]; then
+if [ ! -d $home/.ipfs ]; then
     ipfs init
 fi
 
