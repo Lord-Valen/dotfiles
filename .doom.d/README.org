@@ -188,7 +188,7 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 \\usepackage[notes,backend=biber]{biblatex-chicago}
 \\usepackage[margin=1in]{geometry}
 \\doublespacing
-\\addbibresource{./library.bib}
+\\addbibresource{./My\ Library.bib}
 \\makeatletter
 \\newcommand\\@mymakefnmark{\\normalfont\\@thefnmark.\\hfill}
 \\renewcommand\\@makefntext[1]{%
