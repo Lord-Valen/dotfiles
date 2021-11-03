@@ -141,7 +141,7 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
     :config
     (setq
      org-ref-default-citation-link "autocite"
-     bibtex-completion-bibliography '("/home/lord-valen/org-roam/library.bib")
+     bibtex-completion-bibliography '("/home/lord-valen/org-roam/My\ Library.bib")
      bibtex-dialect 'biblatex
      )
     )
