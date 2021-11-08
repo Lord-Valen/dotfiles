@@ -8,7 +8,7 @@
 # See https://docs.haskellstack.org/en/stable/yaml_configuration/#templates
 templates:
   params:
-local-bin-path: "~/.local/.stack/"
+local-bin-path: ".local/.stack/"
 
 # The following parameter specifies stack's output styles; STYLES is a
 # colon-delimited sequence of key=value, where 'key' is a style name and

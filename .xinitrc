@@ -9,5 +9,4 @@ else
         . "$HOME/.xprofile"
         fi
 
-picom &
-exec i3
+exec xmonad
