@@ -141,7 +141,7 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
     :config
     (setq
      org-ref-default-citation-link "autocite"
-     bibtex-completion-bibliography '("/home/lord-valen/org-roam/My\ Library.bib")
+     bibtex-completion-bibliography '("/home/lord-valen/org-roam/My Library.bib")
      bibtex-dialect 'biblatex
      )
     )
@@ -188,7 +188,7 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 \\usepackage[notes,backend=biber]{biblatex-chicago}
 \\usepackage[margin=1in]{geometry}
 \\doublespacing
-\\addbibresource{./My\ Library.bib}
+\\addbibresource{./My Library.bib}
 \\makeatletter
 \\newcommand\\@mymakefnmark{\\normalfont\\@thefnmark.\\hfill}
 \\renewcommand\\@makefntext[1]{%
