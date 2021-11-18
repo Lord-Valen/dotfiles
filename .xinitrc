@@ -9,4 +9,5 @@ else
         . "$HOME/.xprofile"
         fi
 
+xmonad --recompile
 exec xmonad
