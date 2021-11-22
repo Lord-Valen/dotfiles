@@ -296,7 +296,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                       ||| wideAccordion
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" dev ", " www ", " doc ", " sys ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
+myWorkspaces = [" sys ", " doc ", " www ", " dev ", " chat ", " vm ", " mus ", " vid ", " gfx "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -315,12 +315,12 @@ myManageHook = composeAll
                  className =? "splash"                  --> doFloat,
                  className =? "toolbar"                 --> doFloat,
                  className =? "Yad"                     --> doCenterFloat,
-                 className =? "Brave-browser"           --> doShift ( myWorkspaces !! 1 ),
-                 className =? "Zotero"                  --> doShift ( myWorkspaces !! 2 ),
-                 className =? "Virtual Machine Manager" --> doShift ( myWorkspaces !! 4 ),
-                 className =? "discord"                 --> doShift ( myWorkspaces !! 5 ),
-                 className =? "Element"                 --> doShift ( myWorkspaces !! 5 ),
-                 className =? "Signal"                  --> doShift ( myWorkspaces !! 5 ),
+                 className =? "Zotero"                  --> doShift ( myWorkspaces !! 1 ),
+                 className =? "Brave-browser"           --> doShift ( myWorkspaces !! 2 ),
+                 className =? "discord"                 --> doShift ( myWorkspaces !! 4 ),
+                 className =? "Element"                 --> doShift ( myWorkspaces !! 4 ),
+                 className =? "Signal"                  --> doShift ( myWorkspaces !! 4 ),
+                 className =? "Virtual Machine Manager" --> doShift ( myWorkspaces !! 5 ),
                  className =? "mpv"                     --> doShift ( myWorkspaces !! 7 ),
                  className =? "Steam"                   --> doShift ( myWorkspaces !! 8 ),
                  className =? "Gimp"                    --> doShift ( myWorkspaces !! 8 ),
