@@ -12,7 +12,7 @@ done
 alias \
     bup="sudo timeshift --create" \
     res="sudo timeshift --restore" \
-    upg="paru -Syu && doom upgrade && doom doctor" \
+    upg="paru -Syu --noconfirm && doom -y upgrade && doom doctor" \
     clr="clear" \
     bat="cat /sys/class/power_supply/BAT?/capacity" \
     cp="cp -iv" \
