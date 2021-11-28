@@ -3,5 +3,5 @@ configuration {
               matching: "fuzzy";
               sort: true;
               sorting-method: "fzf";
-              theme: "~/.config/rofi/themes/lv-line.rasi";
 }
+@theme "~/.config/rofi/themes/lv-line.rasi"
