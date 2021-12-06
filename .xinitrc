@@ -9,5 +9,6 @@ else
         . "$HOME/.xprofile"
         fi
 
+dinit &
 xmonad --recompile
 exec xmonad
