@@ -5,7 +5,6 @@
 #+PROPERTY:     header-args :tangle config.el
 
 * Table of Contents :TOC:
-- [[#about-this-config][About this Config]]
 - [[#lexical-binding][Lexical Binding]]
 - [[#name-and-email][Name and Email]]
 - [[#macros][Macros]]
@@ -26,11 +25,6 @@
   - [[#circe-network-options][Circe Network Options]]
   - [[#circe-format][Circe Format]]
   - [[#filter][Filter]]
-
-* About this Config
-This is the DOOM Emacs configuration of Lord Valen: [[https://gitlab.com/Lord_Valen][Gitlab]]
-
-Emacs is my IDE of choice but I'm still a Vim user! This config uses evil mode and some cosmetic plugins for your viewing pleasure. If you're going to be using ERC, make sure you change the nickname in the ERC section!
 
 * Lexical Binding
 Enable lexical binding
