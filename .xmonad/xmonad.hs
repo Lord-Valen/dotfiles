@@ -111,7 +111,6 @@ myStartupHook = do
     spawnOnce "volumeicon &"
     spawnOnce "conky -c $HOME/.config/conky/xmonad/doom-one-01.conkyrc"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true       --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
-    --spawnOnce "/usr/bin/emacs --daemon &" -- emacs daemon for the emacsclient
     spawnOnce "feh --no-fehbg --bg-scale -z ~/.config/wallpaper/*"  -- feh set random wallpaper
     --spawnOnce "xargs xwallpaper --maximize < ~/.config/wallpaper"
 
@@ -430,7 +429,7 @@ myKeys =
   -}
 
   -- KB_GROUP Emacs (CTRL-e followed by a key)
-    ("M-a", spawn ".local/bin/emacsd")
+    ("M-a", spawn (myEmacs))
   {-
     ("C-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'"))),   -- emacs dashboard
     ("C-e b", spawn (myEmacs ++ ("--eval '(ibuffer)'"))),   -- list buffers
