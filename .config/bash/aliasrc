@@ -46,7 +46,7 @@ usv () {
 # Useful sv shortcuts
 alias \
     svs="sv s /run/runit/service/*" \
-    usvs="sv s $HOME/.local/runit/sv/*"
+    usvs="sv s $HOME/.local/runit/*"
 
 # Add color to commands
 alias \
