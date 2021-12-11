@@ -13,6 +13,7 @@ alias \
     bup="sudo timeshift --create" \
     res="sudo timeshift --restore" \
     upg="paru -Syu --noconfirm && doom -y upgrade && doom doctor" \
+    upgp="docker stop portainer && docker rm portainer && docker pull portainer/portaine-ce:latest && docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /docker/appdata/portainer:/data portainer/portainer-ce:latest" \
     clr="clear" \
     bat="cat /sys/class/power_supply/BAT?/capacity" \
     cp="cp -iv" \
