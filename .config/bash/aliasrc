@@ -4,7 +4,7 @@
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Stop making me type sudo >:|
-for x in docker timeshift mount umount sv pacman updatedb poweroff shutdown reboot ; do
+for x in docker timeshift mount umount pacman updatedb poweroff shutdown reboot ; do
         alias $x="sudo $x"
 done
 
@@ -14,40 +14,28 @@ alias \
     res="sudo timeshift --restore" \
     upg="paru -Syu --noconfirm && doom -y upgrade && doom doctor" \
     upgp="docker stop portainer && docker rm portainer && docker pull portainer/portaine-ce:latest && docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /docker/appdata/portainer:/data portainer/portainer-ce:latest" \
-    clr="clear" \
+    upgd="doom upgrade && doom doctor" \
     bat="cat /sys/class/power_supply/BAT?/capacity" \
     cp="cp -iv" \
     mv="mv -iv" \
     rm="rm -v" \
     mkd="mkdir -pv" \
-    rmd="rmdir -pv" \
-    doomsync="$HOME/.emacs.d/bin/doom sync" \
-    yt="youtube-dl --add-metadata -i" \
-    yta="yt -x -f bestaudio/best" \
-    ffmpeg="ffmpeg -hide_banner" \
+    rmd="rmdir -v" \
     ka="killall" \
     g="git" \
     conf="g --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
-    p="pacman" \
+    p="paru" \
     f="$FILE" \
     e="$EDITOR" \
-    vmu="sv up libvirtd virtlogd virtlockd" \
-    vmd="sv down libvirtd virtlogd virtlockd"
+    sv="sudo dinitctl" \
+    svs="sudo dinitctl list" \
+    usv="dinitctl" \
+    usvs="sudo dinitctl list"
 
 # Runs zathura independently.
 z () {
         zathura $* & disown
 }
-
-# sv, but for user services
-usv () {
-        env SVDIR=$HOME/.local/runit/sv sv "$@"
-}
-
-# Useful sv shortcuts
-alias \
-    svs="sv s /run/runit/service/*" \
-    usvs="sv s $HOME/.local/runit/*"
 
 # Add color to commands
 alias \

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-[ -r ./conf ] && . ./conf
-
-exec mpd --no-daemon --stderr ${OPTS:-} 2>&1
