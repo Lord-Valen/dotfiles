@@ -80,7 +80,7 @@
        gist
        (lookup +dictionary)
        lsp
-       magit
+       (magit +forge)
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf
