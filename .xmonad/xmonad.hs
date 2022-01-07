@@ -285,14 +285,14 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
     myDefaultLayout = withBorder myBorderWidth tall
                       ||| magnify
                       ||| noBorders monocle
-                      ||| floats
                       ||| noBorders tabs
                       ||| grid
-                      ||| spirals
                       ||| threeCol
                       ||| threeRow
                       ||| tallAccordion
                       ||| wideAccordion
+                      ||| floats
+                      ||| spirals
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 myWorkspaces = [" sys ", " doc ", " www ", " dev ", " chat ", " vm ", " mus ", " vid ", " gfx "]
@@ -304,27 +304,29 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
                [
-                 className =? "confirm"                 --> doFloat,
-                 className =? "file_progress"           --> doFloat,
-                 className =? "dialog"                  --> doFloat,
-                 className =? "download"                --> doFloat,
-                 className =? "error"                   --> doFloat,
-                 className =? "notification"            --> doFloat,
-                 className =? "pinentry-gtk-2"          --> doFloat,
-                 className =? "splash"                  --> doFloat,
-                 className =? "toolbar"                 --> doFloat,
-                 className =? "Yad"                     --> doCenterFloat,
-                 className =? "Zotero"                  --> doShift ( myWorkspaces !! 1 ),
-                 className =? "Brave-browser"           --> doShift ( myWorkspaces !! 2 ),
-                 className =? "discord"                 --> doShift ( myWorkspaces !! 4 ),
-                 className =? "Element"                 --> doShift ( myWorkspaces !! 4 ),
-                 className =? "Signal"                  --> doShift ( myWorkspaces !! 4 ),
-                 className =? "Virt-manager"            --> doShift ( myWorkspaces !! 5 ),
-                 className =? "mpv"                     --> doShift ( myWorkspaces !! 7 ),
-                 className =? "Steam"                   --> doShift ( myWorkspaces !! 8 ),
-                 className =? "Gimp"                    --> doShift ( myWorkspaces !! 8 ),
-                 className =? "Inkscape"                --> doShift ( myWorkspaces !! 8 ),
-                 isFullscreen                           --> doFullFloat
+                 className =? "confirm"        --> doFloat,
+                 className =? "file_progress"  --> doFloat,
+                 className =? "dialog"         --> doFloat,
+                 className =? "download"       --> doFloat,
+                 className =? "error"          --> doFloat,
+                 className =? "notification"   --> doFloat,
+                 className =? "pinentry-gtk-2" --> doFloat,
+                 className =? "splash"         --> doFloat,
+                 className =? "toolbar"        --> doFloat,
+                 className =? "Yad"            --> doCenterFloat,
+                 className =? "Zotero"         --> doShift ( myWorkspaces !! 1 ),
+                 className =? "Brave-browser"  --> doShift ( myWorkspaces !! 2 ),
+                 className =? "discord"        --> doShift ( myWorkspaces !! 4 ),
+                 className =? "Element"        --> doShift ( myWorkspaces !! 4 ),
+                 className =? "Signal"         --> doShift ( myWorkspaces !! 4 ),
+                 className =? "Virt-manager"   --> doShift ( myWorkspaces !! 5 ),
+                 className =? "mpv"            --> doShift ( myWorkspaces !! 7 ),
+                 className =? "Steam"          --> doShift ( myWorkspaces !! 8 ),
+                 className =? "Lutris"         --> doShift ( myWorkspaces !! 8 ),
+                 className =? "itch"           --> doShift ( myWorkspaces !! 8 ),
+                 className =? "Gimp"           --> doShift ( myWorkspaces !! 8 ),
+                 className =? "Inkscape"       --> doShift ( myWorkspaces !! 8 ),
+                 isFullscreen                  --> doFullFloat
                  ] <+> namedScratchpadManageHook myScratchPads
 
 -- START_KEYS

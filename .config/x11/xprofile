@@ -4,7 +4,7 @@
 # If you use startx/xinit like a Chad, this file will also be sourced.
 
 # Use Caps Lock as Compose and double Shift as Caps Lock
-setxkbmap -model pc101 -layout us -variant colemak_dh -option compose:caps -option shift:both_capslock
+#setxkbmap -model pc101 -layout us -variant colemak_dh -option compose:caps -option shift:both_capslock
 
 #mpd &			# music player daemon-you might prefer it as a service though
 #remaps &		# run the remaps script, switching caps/esc and more; check it for more info

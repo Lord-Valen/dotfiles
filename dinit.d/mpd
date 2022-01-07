@@ -1,3 +1,0 @@
-type = process
-command = /usr/sbin/mpd --no-daemon
-restart = true

@@ -10,5 +10,5 @@ else
         fi
 
 dinit &
-xmonad --recompile
+#xmonad --recompile
 exec xmonad
