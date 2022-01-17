@@ -10,7 +10,7 @@
 - [[#macros][Macros]]
 - [[#functions][Functions]]
 - [[#colemak-evil][Colemak Evil]]
-- [[#fonts][Fonts]]
+- [[#appearance][Appearance]]
 - [[#org-mode][Org Mode]]
   - [[#preamble][Preamble]]
   - [[#directories][Directories]]
@@ -60,6 +60,7 @@ Username and email. Some functionality uses this to identify you, e.g. GPG confi
     `(add-hook ',hook-sym ,body nil ,local)
     ))
 #+end_src
+
 * Functions
 #+begin_src emacs-lisp
 (defun dlukes/ediff-doom-config (file)
@@ -92,8 +93,8 @@ diff.
   )
 #+end_src
 
-* Fonts
-Set fonts and font sizes.
+* Appearance
+Set fonts and font sizes. Select Doom Theme.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
   :font "Inconsolata Nerd Font Mono"
@@ -127,6 +128,8 @@ Set fonts and font sizes.
 (add-to-list 'default-frame-alist '(font . "Inconsolata Nerd Font Mono-12"))
 ;; changes certain keywords to symbols, such as lamda!
 (setq global-prettify-symbols-mode t)
+
+(setq doom-theme 'doom-outrun-electric)
 #+end_src
 
 * Org Mode

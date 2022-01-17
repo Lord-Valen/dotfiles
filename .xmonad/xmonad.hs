@@ -319,6 +319,7 @@ myManageHook = composeAll
                  className =? "discord"        --> doShift ( myWorkspaces !! 4 ),
                  className =? "Element"        --> doShift ( myWorkspaces !! 4 ),
                  className =? "Signal"         --> doShift ( myWorkspaces !! 4 ),
+                 className =? "zoom"           --> doShift ( myWorkspaces !! 4 ),
                  className =? "Virt-manager"   --> doShift ( myWorkspaces !! 5 ),
                  className =? "mpv"            --> doShift ( myWorkspaces !! 7 ),
                  className =? "Steam"          --> doShift ( myWorkspaces !! 8 ),
