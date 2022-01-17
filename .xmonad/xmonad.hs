@@ -1,6 +1,5 @@
 -- Base
 import XMonad
-import System.Directory
 import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
 import qualified XMonad.StackSet as W
@@ -18,10 +17,8 @@ import qualified XMonad.Actions.Search as S
 
 -- Data
 import Data.Char (isSpace, toUpper)
-import Data.Maybe (fromJust)
+import Data.Maybe (fromJust, isJust)
 import Data.Monoid
-import Data.Maybe (isJust)
-import Data.Tree
 import qualified Data.Map as M
 
 -- Hooks
@@ -29,10 +26,7 @@ import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, s
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doCenterFloat)
-import XMonad.Hooks.ServerMode
-import XMonad.Hooks.SetWMName
 --import XMonad.Hooks.StatusBar
-import XMonad.Hooks.WorkspaceHistory
 
 -- Layouts
 import XMonad.Layout.Accordion
@@ -61,7 +55,6 @@ import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(T
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
 -- Utilities
-import XMonad.Util.Dmenu
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
