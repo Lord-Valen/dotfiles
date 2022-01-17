@@ -16,8 +16,10 @@ cleanup = true
 [git]
 max_concurrency = 5
 repos = [
+      "~/.dotfiles",
+      "~",
       "~/episteme",
-      "~/dotfiles",
+      "~/org-roam/*",
       "~/dev/*"
 ]
 arguments = "--rebase --autostash"
