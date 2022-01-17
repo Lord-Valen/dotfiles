@@ -248,7 +248,7 @@ tabs     = renamed [Replace "tabs"]
                 -- I cannot add spacing to this layout because it will add spacing between window and tabs which looks bad.
        $ tabbed shrinkText myTabTheme
 tallAccordion = renamed [Replace "tallAccordion"]
-                $ Accordion
+                Accordion
 wideAccordion = renamed [Replace "wideAccordion"]
                 $ Mirror Accordion
 
@@ -289,7 +289,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 myWorkspaces = [" sys ", " doc ", " www ", " dev ", " chat ", " vm ", " mus ", " vid ", " gfx "]
-myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
+myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
   where i = fromJust $ M.lookup ws myWorkspaceIndices
@@ -339,8 +339,8 @@ myKeys =
     ("M-S-<Return>", spawn "rofi -show run"),
 
   -- KB_GROUP Commonly used programs
-    ("M-<Return>", spawn (myTerminal)),
-    ("M-b", spawn (myBrowser)),
+    ("M-<Return>", spawn myTerminal),
+    ("M-b", spawn myBrowser),
     ("M-M1-h", spawn (myTerminal ++ " -e htop")),
 
   -- KB_GROUP Kill windows
@@ -425,7 +425,8 @@ myKeys =
   -}
 
   -- KB_GROUP Emacs (CTRL-e followed by a key)
-    ("M-a", spawn (myEmacs))
+    ("M-a", spawn myEmacs)
+
   {-
     ("C-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'"))),   -- emacs dashboard
     ("C-e b", spawn (myEmacs ++ ("--eval '(ibuffer)'"))),   -- list buffers
@@ -475,12 +476,12 @@ main = do
     , modMask            = myModMask
     , terminal           = myTerminal
     , startupHook        = myStartupHook
-    , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
+    , layoutHook         = showWName' myShowWNameTheme myLayoutHook
     , workspaces         = myWorkspaces
     , borderWidth        = myBorderWidth
     , normalBorderColor  = myNormColor
     , focusedBorderColor = myFocusColor
-    , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
+    , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP xmobarPP
  --   $ dynamicEasySBs barSpawner
                 -- the following variables beginning with 'pp' are settings for xmobar.
                 {-
