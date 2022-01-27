@@ -1,0 +1,12 @@
+* root :elfeed:
+** Blogs :blog:
+*** Tech :tech:
+**** [[https://ariadne.space/feed][Ariadne's Space]] :foss:linux:
+
+** News :news:
+*** Tech :tech:
+**** [[https://news.itsfoss.com/feed][It's FOSS]] :foss:
+
+** Linux :linux:
+*** [[https://archlinux.org/feeds/news][archlinux]] :arch:
+*** [[https://weekly.nixos.org/feeds/all.rss.xml][NixOS]] :nixos:

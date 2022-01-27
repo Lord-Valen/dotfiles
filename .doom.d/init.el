@@ -43,13 +43,14 @@
        vc-gutter
        vi-tilde-fringe
        window-select
-       workspaces
+       ;; workspaces
 
        :editor
        (evil +everywhere)
        file-templates
        fold
        (format +onsave)
+       lispy
        parinfer
        snippets
        word-wrap
@@ -72,7 +73,7 @@
        :tools
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
-       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       ;;debugger          ; stepping through code, to help you add bugs
        ;;direnv
        (docker +lsp)
        ;;editorconfig      ; let someone else argue about tabs vs spaces
@@ -84,34 +85,34 @@
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf
-       ;;prodigy           ; FIXME managing external services & code builders
+       ;;prodigy           ; managing external services & code builders
        rgb
        ;;tmux              ; an API for interacting with tmux
 
        :os
        (:if IS-MAC macos)
-       ;;tty               ; improve the terminal Emacs experience
+       tty               ; improve the terminal Emacs experience
 
        :lang
        (cc +lsp)
-       ;;common-lisp
+       common-lisp
        ;;(csharp +lsp)
        ;;data              ; config/data formats
        emacs-lisp
        ;;(ess +lsp)        ; emacs speaks statistics
-       ;;(go +lsp)
+       (go +lsp)
        (haskell +lsp)
        (json +lsp)
        (javascript +lsp)
        (latex +lsp)
-       ;;(lua +lsp)         ; one-based indices? one-based indices
+       (lua +lsp)         ; one-based indices? one-based indices
        ;;markdown
        nix
        (org +roam2)
        ;;(php +lsp)
-       ;;(python +lsp)
+       (python +lsp)
        ;;qt
-       ;;(rust +lsp)
+       (rust +lsp)
        (sh +lsp)
        (yaml +lsp)
 
