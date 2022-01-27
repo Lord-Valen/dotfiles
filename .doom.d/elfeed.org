@@ -2,11 +2,21 @@
 ** Blogs :blog:
 *** Tech :tech:
 **** [[https://ariadne.space/feed][Ariadne's Space]] :foss:linux:
+**** [[https://www.pine64.org/blog/feed][Pine64]] :foss:fosh:
+**** [[https://www.sifive.com/feed.xml][SiFive]] :fosh:riscv:
+**** [[https://www.kalzumeus.com/feed/articles/][kalzumeus]] :patio11:finance:
+*** Finance :finance:
+**** [[https://bam.kalzumeus.com/archive/rss/][Bits About Money]] :patio11:tech:
 
 ** News :news:
 *** Tech :tech:
 **** [[https://news.itsfoss.com/feed][It's FOSS]] :foss:
+**** [[https://riscv.org/feed/][RISC-V]] :foss:fosh:riscv:
+**** Security :infosec:
+***** [[https://www.wired.com/feed/security/rss][WIRED Security]] :wired:
+***** [[https://feeds.feedburner.com/TheHackersNews?format=xml][The Hacker News]]
 
 ** Linux :linux:
 *** [[https://archlinux.org/feeds/news][archlinux]] :arch:
 *** [[https://weekly.nixos.org/feeds/all.rss.xml][NixOS]] :nixos:
+**** [[https://mobile.nixos.org/index.xml][Mobile NixOS]] :mobile:
