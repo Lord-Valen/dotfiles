@@ -401,7 +401,7 @@ Set some variables and keep my secrets secret.
 (use-package! elfeed-org
   :config
   (setq rmh-elfeed-org-files '("~/.doom.d/elfeed.org"))
-  (setq elfeed-search-filter "+unread ")
+  (setq elfeed-search-filter "@1-week-ago +unread ")
   (add-hook 'elfeed-new-entry-hook (elfeed-make-tagger :before "2 weeks ago" :remove 'unread))
   (add-hook 'elfeed-search-mode-hook 'elfeed-update))
 #+end_src

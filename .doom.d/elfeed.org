@@ -21,10 +21,11 @@
 *** Tech :tech:
 **** [[https://news.itsfoss.com/feed][It's FOSS]] :foss:
 **** [[https://riscv.org/feed/][RISC-V]] :foss:fosh:riscv:
-**** Security :sec:
+**** [[https://www.fedscoop.com/feed][FEDSCOOP]] :scoop:
+**** Security :security:
 ***** [[https://www.wired.com/feed/security/rss][WIRED Security]] :wired:
 ***** [[https://feeds.feedburner.com/TheHackersNews][The Hacker News]]
-***** [[https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml][NVD RSS]] :cve:
+***** [[https://www.cyberscoop.com/feed/][CYBERSCOOP]] :scoop:
 
 ** Linux :linux:
 *** [[https://archlinux.org/feeds/news][archlinux]] :arch:
