@@ -89,6 +89,9 @@ myFont = "xft:Inconsolata Nerd Font Mono:regular:size=9:antialias=true:hinting=t
 myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super key
 
+myRunPrompt :: String
+myRunPrompt = "rofi -show run"
+
 myTerminal :: String
 myTerminal = "kitty"    -- Sets default terminal
 
@@ -399,7 +402,7 @@ myKeys =
     ("M-/", spawn "~/.xmonad/xmonad_keys.sh"), -- Get list of keybindings
 
   -- KB_GROUP Run Prompt
-    ("M-S-<Return>", spawn "rofi -show run"),
+    ("M-S-<Return>", spawn myRunPrompt),
 
   -- KB_GROUP Commonly used programs
     ("M-<Return>", spawn myTerminal),
