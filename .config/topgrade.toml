@@ -29,6 +29,7 @@ arguments = "--rebase --autostash"
 #"Emacs Snapshot" = "rm -rf ~/.emacs.d/elpa.bak && cp -rl ~/.emacs.d/elpa ~/.emacs.d/elpa.bak"
 
 [commands]
+"Doom" = "~/.emacs.d/bin/doom sync && ~/.emacs.d/bin/doom doctor"
 "Xmonad Recompile" = "/usr/bin/xmonad --recompile"
 
 [linux]
