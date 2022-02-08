@@ -1,0 +1,104 @@
+services:
+  prowlarr:
+    image: ghcr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - PUID=111
+      - PGID=123
+      - UMASK=002
+    volumes:
+      - /docker/appdata/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr
+    container_name: lidarr
+    environment:
+      - PUID=222
+      - PGID=123
+      - UMASK=002
+    volumes:
+      - /docker/appdata/lidarr:/config
+      - /data:/data
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=333
+      - PGID=123
+      - UMASK=002
+    volumes:
+      - /docker/appdata/sonarr:/config
+      - /data:/data
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=444
+      - PGID=123
+      - UMASK=002
+    volumes:
+      - /docker/appdata/radarr:/config
+      - /data:/data
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  readarr:
+    image: ghcr.io/linuxserver/readarr:nightly
+    container_name: readarr
+    environment:
+      - PUID=555
+      - PGID=123
+      - UMASK=002
+    volumes:
+      - /docker/appdata/readarr:/config
+      - /data:/data
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+
+  deluge:
+    image: lscr.io/linuxserver/deluge
+    container_name: deluge
+    environment:
+      - PUID=666
+      - PGID=123
+      - UMASK=002
+    volumes:
+      - /docker/appdata/deluge/config:/config
+      - /docker/appdata/deluge/downloads:/downloads
+      - /data/torrents:/data/torrents
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=777
+      - PGID=123
+      - UMASK=002
+      - TZ=Canada/Eastern
+    volumes:
+      - /docker/appdata/jellyfin:/config
+      - /data/media:/media
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+      - 1900:1900/udp
+    restart: unless-stopped
