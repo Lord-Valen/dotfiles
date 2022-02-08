@@ -174,15 +174,13 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 
 ** Export Settings
 #+begin_src emacs-lisp
-(setq org-export-headline-levels 5)
-(require 'ox-extra)
-(ox-extras-activate '(ignore-headlines))
-#+end_src
-
-#+begin_src emacs-lisp
 (use-package! ox-latex
   :init
   :config
+  (setq org-export-headline-levels 5)
+  (setq org-export-with-section-numbers nil)
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))
   (--map (add-to-list 'org-latex-classes it) '(("chicago" "\\documentclass[letterpaper,12pt]{article}
 [DEFAULT-PACKAGES]
 \\usepackage{newtxtext}
