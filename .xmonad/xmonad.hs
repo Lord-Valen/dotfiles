@@ -340,6 +340,7 @@ myKeys =
 
   -- KB_GROUP Run Prompt
     ("M-S-<Return>", spawn myRunPrompt),
+    ("M-S-<Return>", spawn "/usr/bin/rofi -show run"),
 
   -- KB_GROUP Commonly used programs
     ("M-<Return>", spawn myTerminal),
