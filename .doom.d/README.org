@@ -231,7 +231,6 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 \\usepackage{newtxtext}
 \\usepackage{url}
 \\usepackage{doi}
-\\usepackage[margin=1in]{geometry}
 \\addbibresource{./lib.bib}"
                                                 ("\\section{%s}" . "\\section*{%s}")
                                                 ("\\subsection{%s}" . "\\subsection*{%s}")
