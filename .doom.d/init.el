@@ -18,7 +18,7 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 (doom! :input
-       ;;layout
+       ;;(layout)
 
        :completion
        company
@@ -97,15 +97,15 @@
        (cc +lsp)
        common-lisp
        ;;(csharp +lsp)
-       ;;data              ; config/data formats
+       ;; data              ; config/data formats
        emacs-lisp
-       ;;(ess +lsp)        ; emacs speaks statistics
-       (go +lsp)
+       ;; (ess +lsp)        ; emacs speaks statistics
+       ;; (go +lsp)
        (haskell +lsp)
        (json +lsp)
        (javascript +lsp)
        (latex +lsp)
-       (lua +lsp)         ; one-based indices? one-based indices
+       ;; (lua +lsp)         ; one-based indices? one-based indices
        ;;markdown
        nix
        (org +roam2)

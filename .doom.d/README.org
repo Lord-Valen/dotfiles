@@ -316,8 +316,7 @@ Set some variables and keep my secrets secret.
          :nick nick
          :sasl-username nick
          :sasl-password pass
-         :channels (
-                    "#philosophy"
+         :channels ("#philosophy"
                     "#idleRPG"
                     "#physics"
                     "#science"
