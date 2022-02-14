@@ -3,7 +3,6 @@
 #+DATE:         June 12, 2021
 #+DESCRIPTION:  Lord Valen's DOOM config
 #+PROPERTY:     header-args :tangle config.el
-
 * Table of Contents :TOC:
 - [[#lexical-binding][Lexical Binding]]
 - [[#name-and-email][Name and Email]]
@@ -29,20 +28,15 @@
 - [[#elfeed][Elfeed]]
 
 * Lexical Binding
-Enable lexical binding
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq shell-file-name "bash")
 #+end_src
-
 * Name and Email
-Username and email. Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
 #+begin_src emacs-lisp
 (setq user-full-name "Lord Valen"
-      user-mail-address "lord_valen@pm.me"
-      )
+      user-mail-address "lord_valen@pm.me")
 #+end_src
-
 * Macros
 #+begin_src emacs-lisp
 (defmacro :hook (hook-name &rest body)
@@ -59,10 +53,8 @@ Username and email. Some functionality uses this to identify you, e.g. GPG confi
                        first
                      `(lambda () ,@body))
                  `',first)))
-    `(add-hook ',hook-sym ,body nil ,local)
-    ))
+    `(add-hook ',hook-sym ,body nil ,local)))
 #+end_src
-
 * Functions
 ** latex-headers
 #+begin_src emacs-lisp
@@ -71,7 +63,6 @@ Username and email. Some functionality uses this to identify you, e.g. GPG confi
              headers
              "\n"))
 #+end_src
-
 * Colemak Evil
 #+begin_src emacs-lisp
 (use-package! evil-colemak-basics
@@ -81,66 +72,56 @@ Username and email. Some functionality uses this to identify you, e.g. GPG confi
   :config
   (global-evil-colemak-basics-mode))
 #+end_src
-
 * Appearance
 Set fonts and font sizes. Select Doom Theme.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
   :font "Inconsolata Nerd Font Mono"
   :height 120
-  :weight 'medium
-  )
+  :weight 'medium)
+
 (set-face-attribute 'variable-pitch nil
   :font "Inconsolata Nerd Font"
   :height 120
-  :weight 'medium
-  )
+  :weight 'medium)
+
 (set-face-attribute 'fixed-pitch nil
   :font "Inconsolata Nerd Font Mono"
   :height 120
-  :weight 'medium
-  )
+  :weight 'medium)
 
 ;; Makes commented text and keywords italics.
 ;; Your font must have an italic face available.
 (set-face-attribute 'font-lock-comment-face nil
-  :slant 'italic
-  )
+  :slant 'italic)
+
 (set-face-attribute 'font-lock-keyword-face nil
-  :slant 'italic
-  )
+  :slant 'italic)
 
 ;; Adjust line spacing.
 ;;(setq-default line-spacing 0.12)
-
 ;; Needed if using emacsclient. Otherwise, your fonts will be smaller than expected.
 (add-to-list 'default-frame-alist '(font . "Inconsolata Nerd Font Mono-12"))
 ;; changes certain keywords to symbols, such as lamda!
 (setq global-prettify-symbols-mode t)
-
 (setq doom-theme 'doom-outrun-electric)
 #+end_src
-
 * Org Mode
 ** Preamble
 Wrap everything in (after! org) so that nothing is overwritten by defaults
 #+begin_src emacs-lisp
 (after! org
 #+end_src
-
 ** Directories
 #+begin_src emacs-lisp
 (setq org-directory "~/org-roam/")
 (setq org-agenda-files '("~/org-roam/agenda.org"))
 #+end_src
-
 ** Add org-latex Packages
 #+begin_src emacs-lisp
 (add-to-list 'org-latex-default-packages-alist
-             '("" "setspace" nil)
-             )
+             '("" "setspace" nil))
 #+end_src
-
 ** Org-ref
 #+begin_src emacs-lisp
 (use-package! org-ref
@@ -153,25 +134,21 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
      bibtex-dialect 'biblatex
      )
     )
-
 (use-package! helm-bibtex
   :init
   :config
   )
-
 (add-to-list 'org-capture-templates
              '(("a"               ; key
                 "Article"         ; name
                 entry             ; type
                                         ;(file+headline (concatenate 'string org-directory "/foo.org) "Article")  ; target
                 "\* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
-
                 :prepend t        ; properties
                 :empty-lines 1    ; properties
                 :created t        ; properties
 )))
 #+end_src
-
 ** Export Settings
 #+begin_src emacs-lisp
 (use-package! ox-latex
@@ -238,22 +215,17 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
                                                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
                                                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
                                                 ("\\subsubparagraph{%s}" . "\\subsubparagraph*{%s}")))))
-
 (setq org-latex-hyperref-template nil) ;; stop org adding hypersetup{author..} to latex export
 ;; (setq org-latex-prefer-user-labels t)
-
 ;; deleted unwanted file extensions after latexMK
 (setq org-latex-logfiles-extensions
       (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
-
 #+end_src
-
 ** Backmatter
 Close the (after! org) wrap.
 #+begin_src emacs-lisp
 )
 #+end_src
-
 * Org-Roam
 #+begin_src emacs-lisp
 (use-package! org-roam
@@ -261,12 +233,10 @@ Close the (after! org) wrap.
              :config
              (setq org-roam-directory (file-truename "~/org-roam"))
              (setq org-roam-db-location (file-truename "~/org-roam/org-roam.db"))
-
              (setq org-roam-capture-templates '(("d" "default" plain "%?" :target
                                                  (file+head "${slug}.org" "#+TITLE: ${title}\n")
                                                  :unnarrowed t)))
              (setq org-roam-extract-new-file-path "${slug}.org")
-
              (cl-defmethod org-roam-node-slug (node org-roam-node)
                (let ((title (org-roam-node-title node))
                      (slug-trim-chars '(;; Combining Diacritical Marks https://www.unicode.org/charts/PDF/U0300.pdf
@@ -290,7 +260,6 @@ Close the (after! org) wrap.
                                         814 ; U+032E COMBINING BREVE BELOW
                                         816 ; U+0330 COMBINING TILDE BELOW
                                         817))) ; U+0331 COMBINING MACRON BELOW
-
                  (cl-flet* ((nonspacing-mark-p (char)
                                                (memq char slug-trim-chars))
                             (strip-nonspacing-marks (s)
@@ -305,7 +274,6 @@ Close the (after! org) wrap.
                                    ("-$" . "")))
                           (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
                      (downcase slug)))))
-
              ;; for org-roam-buffer-toggle
              ;; Use side-window like V1
              ;; This can take advantage of slots available with it
@@ -318,9 +286,7 @@ Close the (after! org) wrap.
                             (preserve-size . (t nil))
                             (window-parameters . ((no-other-window . t)
                                                   (no-delete-other-windows . t))))))
-
 #+end_src
-
 * Format
 Config for Doom's format package.
 #+begin_src emacs-lisp
@@ -328,25 +294,20 @@ Config for Doom's format package.
       '(not emacs-lisp-mode
             sql-mode
             tex-mode
-            latex-mode
-        ))
+            latex-mode))
 #+end_src
-
 * IRC
 Configuration for the IRC Client.
-
 ** Credential management
 Set some variables and keep my secrets secret.
 #+begin_src emacs-lisp
 (setq creds "~/.doom.d/creds.el")
 (setq nick "lord_valen")
-
 (defun pass (server)
              (with-temp-buffer
                (insert-file-contents-literally creds)
                (plist-get (read (buffer-string)) :pass)))
 #+end_src
-
 ** Circe Network Options
 #+begin_src emacs-lisp
 (setq circe-network-options
@@ -361,13 +322,8 @@ Set some variables and keep my secrets secret.
                     "#physics"
                     "#science"
                     "#emacs"
-                    "#"
-                    )
-         )
-        )
-      )
+                    "#"))))
 #+end_src
-
 ** Circe Format
 *** Messages
 #+begin_src emacs-lisp
@@ -376,7 +332,6 @@ Set some variables and keep my secrets secret.
 (setq circe-format-message "{nick:-16s} => {chattarget}> {body}")
 (setq circe-format-self-message "{nick:-16s} => {chattarget}> {body}")
 #+end_src
-
 *** Prompt
 #+begin_src emacs-lisp
 (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
@@ -384,15 +339,12 @@ Set some variables and keep my secrets secret.
   (lui-set-prompt
    (concat (propertize (concat (buffer-name) ">")
                        'face 'circe-prompt-face)
-           " ")
-   ))
+           " ")))
 #+end_src
-
 ** Filter
 #+begin_src emacs-lisp
 (setq circe-reduce-lurker-spam t)
 #+end_src
-
 * Elfeed
 #+begin_src emacs-lisp
 (use-package! elfeed-org
