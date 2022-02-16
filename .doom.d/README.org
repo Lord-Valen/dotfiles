@@ -5,37 +5,23 @@
 #+PROPERTY:     header-args :tangle config.el
 * Table of Contents :TOC:
 - [[#lexical-binding][Lexical Binding]]
-- [[#name-and-email][Name and Email]]
 - [[#macros][Macros]]
 - [[#functions][Functions]]
   - [[#latex-headers][latex-headers]]
-- [[#colemak-evil][Colemak Evil]]
+- [[#name-and-email][Name and Email]]
 - [[#appearance][Appearance]]
-- [[#org-mode][Org Mode]]
-  - [[#preamble][Preamble]]
-  - [[#directories][Directories]]
-  - [[#add-org-latex-packages][Add org-latex Packages]]
-  - [[#org-ref][Org-ref]]
-  - [[#export-settings][Export Settings]]
-  - [[#backmatter][Backmatter]]
-- [[#org-roam][Org-Roam]]
-- [[#format][Format]]
-- [[#irc][IRC]]
-  - [[#credential-management][Credential management]]
-  - [[#circe-network-options][Circe Network Options]]
-  - [[#circe-format][Circe Format]]
-  - [[#filter][Filter]]
-- [[#elfeed][Elfeed]]
+- [[#package-config][Package Config]]
+  - [[#colemak-evil][Colemak Evil]]
+  - [[#elfeed][Elfeed]]
+  - [[#eww][EWW]]
+  - [[#format][Format]]
+  - [[#irc][IRC]]
+  - [[#org-mode][Org Mode]]
+  - [[#org-roam][Org-Roam]]
 
 * Lexical Binding
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-(setq shell-file-name "bash")
-#+end_src
-* Name and Email
-#+begin_src emacs-lisp
-(setq user-full-name "Lord Valen"
-      user-mail-address "lord_valen@pm.me")
 #+end_src
 * Macros
 #+begin_src emacs-lisp
@@ -63,14 +49,11 @@
              headers
              "\n"))
 #+end_src
-* Colemak Evil
+* Name and Email
 #+begin_src emacs-lisp
-(use-package! evil-colemak-basics
-  :after evil
-  :init
-  (setq evil-colemak-basics-layout-mod `mod-dh)
-  :config
-  (global-evil-colemak-basics-mode))
+(setq user-full-name "Lord Valen"
+      user-mail-address "lord_valen@pm.me")
+(setq shell-file-name "bash")
 #+end_src
 * Appearance
 Set fonts and font sizes. Select Doom Theme.
@@ -106,23 +89,107 @@ Set fonts and font sizes. Select Doom Theme.
 (setq global-prettify-symbols-mode t
       doom-theme 'doom-outrun-electric)
 #+end_src
-* Org Mode
-** Preamble
+* Package Config
+** Colemak Evil
+#+begin_src emacs-lisp
+(use-package! evil-colemak-basics
+  :after evil
+  :init
+  (setq evil-colemak-basics-layout-mod `mod-dh)
+  :config
+  (global-evil-colemak-basics-mode))
+#+end_src
+** Elfeed
+#+begin_src emacs-lisp
+(use-package! elfeed-org
+  :config
+  (setq rmh-elfeed-org-files '("~/.doom.d/elfeed.org")
+        elfeed-search-filter "@1-week-ago +unread ")
+  (add-hook 'elfeed-new-entry-hook (elfeed-make-tagger :before "2 weeks ago" :remove 'unread))
+  (add-hook 'elfeed-search-mode-hook 'elfeed-update))
+#+end_src
+** EWW
+#+begin_src emacs-lisp
+(use-package! eww
+  :init
+  :config
+  (setq browse-url-browser-function 'eww-browse-url
+        browse-url-secondary-browser-function 'browse-url-default-browser))
+#+end_src
+** Format
+Config for Doom's format package.
+#+begin_src emacs-lisp
+(setq format-on-save-enabled-modes
+      '(not emacs-lisp-mode
+            sql-mode
+            tex-mode
+            latex-mode))
+#+end_src
+** IRC
+Configuration for the IRC Client.
+*** Credential management
+Set some variables and keep my secrets secret.
+#+begin_src emacs-lisp
+(setq creds "~/.doom.d/creds.el"
+      nick "lord-valen")
+(defun pass (server
+             (with-temp-buffer
+               (insert-file-contents-literally creds)
+               (plist-get (read (buffer-string)) :pass))))
+#+end_src
+*** Circe Network Options
+#+begin_src emacs-lisp
+(setq circe-network-options
+      '(("Freenode" :host "chat.freenode.net" :port (6667 . 6697)
+         :tls t
+         :nick nick
+         :sasl-username nick
+         :sasl-password pass
+         :channels ("#philosophy"
+                    "#idleRPG"
+                    "#physics"
+                    "#science"
+                    "#emacs"
+                    "#"))))
+#+end_src
+*** Circe Format
+**** Messages
+#+begin_src emacs-lisp
+(setq circe-format-say "{nick:-16s}> {body}"
+      circe-format-self-say "{nick:-16s}> {body}"
+      circe-format-message "{nick:-16s} => {chattarget}> {body}"
+      circe-format-self-message "{nick:-16s} => {chattarget}> {body}")
+#+end_src
+**** Prompt
+#+begin_src emacs-lisp
+(add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+(defun my-circe-prompt ()
+  (lui-set-prompt
+   (concat (propertize (concat (buffer-name) ">")
+                       'face 'circe-prompt-face)
+           " ")))
+#+end_src
+*** Filter
+#+begin_src emacs-lisp
+(setq circe-reduce-lurker-spam t)
+#+end_src
+** Org Mode
+*** Preamble
 Wrap everything in (after! org) so that nothing is overwritten by defaults
 #+begin_src emacs-lisp
 (after! org
 #+end_src
-** Directories
+*** Directories
 #+begin_src emacs-lisp
 (setq org-directory "~/org-roam/"
       org-agenda-files '("~/org-roam/agenda.org"))
 #+end_src
-** Add org-latex Packages
+*** Add org-latex Packages
 #+begin_src emacs-lisp
 (add-to-list 'org-latex-default-packages-alist
              '("" "setspace" nil))
 #+end_src
-** Org-ref
+*** Org-ref
 #+begin_src emacs-lisp
 (use-package! org-ref
     :after org
@@ -145,7 +212,7 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
                 :created t        ; properties
 )))
 #+end_src
-** Export Settings
+*** Export Settings
 #+begin_src emacs-lisp
 (use-package! ox-latex
   :init
@@ -217,12 +284,12 @@ Wrap everything in (after! org) so that nothing is overwritten by defaults
 (setq org-latex-logfiles-extensions
       (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
 #+end_src
-** Backmatter
+*** Backmatter
 Close the (after! org) wrap.
 #+begin_src emacs-lisp
 )
 #+end_src
-* Org-Roam
+** Org-Roam
 #+begin_src emacs-lisp
 (use-package! org-roam
              :init
@@ -282,70 +349,4 @@ Close the (after! org) wrap.
                             (preserve-size . (t nil))
                             (window-parameters . ((no-other-window . t)
                                                   (no-delete-other-windows . t))))))
-#+end_src
-* Format
-Config for Doom's format package.
-#+begin_src emacs-lisp
-(setq format-on-save-enabled-modes
-      '(not emacs-lisp-mode
-            sql-mode
-            tex-mode
-            latex-mode))
-#+end_src
-* IRC
-Configuration for the IRC Client.
-** Credential management
-Set some variables and keep my secrets secret.
-#+begin_src emacs-lisp
-(setq creds "~/.doom.d/creds.el"
-      nick "lord-valen")
-(defun pass (server
-             (with-temp-buffer
-               (insert-file-contents-literally creds)
-               (plist-get (read (buffer-string)) :pass))))
-#+end_src
-** Circe Network Options
-#+begin_src emacs-lisp
-(setq circe-network-options
-      '(("Freenode" :host "chat.freenode.net" :port (6667 . 6697)
-         :tls t
-         :nick nick
-         :sasl-username nick
-         :sasl-password pass
-         :channels ("#philosophy"
-                    "#idleRPG"
-                    "#physics"
-                    "#science"
-                    "#emacs"
-                    "#"))))
-#+end_src
-** Circe Format
-*** Messages
-#+begin_src emacs-lisp
-(setq circe-format-say "{nick:-16s}> {body}"
-      circe-format-self-say "{nick:-16s}> {body}"
-      circe-format-message "{nick:-16s} => {chattarget}> {body}"
-      circe-format-self-message "{nick:-16s} => {chattarget}> {body}")
-#+end_src
-*** Prompt
-#+begin_src emacs-lisp
-(add-hook 'circe-chat-mode-hook 'my-circe-prompt)
-(defun my-circe-prompt ()
-  (lui-set-prompt
-   (concat (propertize (concat (buffer-name) ">")
-                       'face 'circe-prompt-face)
-           " ")))
-#+end_src
-** Filter
-#+begin_src emacs-lisp
-(setq circe-reduce-lurker-spam t)
-#+end_src
-* Elfeed
-#+begin_src emacs-lisp
-(use-package! elfeed-org
-  :config
-  (setq rmh-elfeed-org-files '("~/.doom.d/elfeed.org")
-        elfeed-search-filter "@1-week-ago +unread ")
-  (add-hook 'elfeed-new-entry-hook (elfeed-make-tagger :before "2 weeks ago" :remove 'unread))
-  (add-hook 'elfeed-search-mode-hook 'elfeed-update))
 #+end_src
