@@ -132,10 +132,9 @@ Set some variables and keep my secrets secret.
 #+begin_src emacs-lisp
 (setq creds "~/.doom.d/creds.el"
       nick "lord-valen")
-(defun pass (server
-             (with-temp-buffer
-               (insert-file-contents-literally creds)
-               (plist-get (read (buffer-string)) :pass))))
+(defun pass (server) (with-temp-buffer
+                        (insert-file-contents-literally creds)
+                        (plist-get (read (buffer-string)) :pass)))
 #+end_src
 *** Circe Network Options
 #+begin_src emacs-lisp
