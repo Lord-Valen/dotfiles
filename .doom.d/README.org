@@ -15,6 +15,7 @@
   - [[#elfeed][Elfeed]]
   - [[#eww][EWW]]
   - [[#irc][IRC]]
+  - [[#projectile][Projectile]]
   - [[#org-mode][Org Mode]]
 
 * Lexical Binding
@@ -54,36 +55,18 @@
 * Appearance
 Set fonts and font sizes. Select Doom Theme.
 #+begin_src emacs-lisp
-(set-face-attribute 'default nil
-  :font "Inconsolata Nerd Font Mono"
-  :height 120
-  :weight 'medium)
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 13)
+      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font")
+      doom-big-font (font-spec :family "FiraCode Nerd Font" :size 18))
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
 
-(set-face-attribute 'variable-pitch nil
-  :font "Inconsolata Nerd Font"
-  :height 120
-  :weight 'medium)
-
-(set-face-attribute 'fixed-pitch nil
-  :font "Inconsolata Nerd Font Mono"
-  :height 120
-  :weight 'medium)
-
-;; Makes commented text and keywords italics.
-;; Your font must have an italic face available.
-(set-face-attribute 'font-lock-comment-face nil
-  :slant 'italic)
-
-(set-face-attribute 'font-lock-keyword-face nil
-  :slant 'italic)
-
-;; Adjust line spacing.
-;;(setq-default line-spacing 0.12)
-;; Needed if using emacsclient. Otherwise, your fonts will be smaller than expected.
-(add-to-list 'default-frame-alist '(font . "Inconsolata Nerd Font Mono-12"))
-;; changes certain keywords to symbols, such as lamda!
-(setq global-prettify-symbols-mode t
-      doom-theme 'doom-outrun-electric)
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t
+        global-prettify-symbols-mode t
+        doom-theme 'doom-outrun-electric))
 #+end_src
 * Package Config
 ** Colemak Evil
@@ -156,6 +139,12 @@ Set some variables and keep my secrets secret.
 *** Filter
 #+begin_src emacs-lisp
 (setq circe-reduce-lurker-spam t)
+#+end_src
+** Projectile
+#+begin_src emacs-lisp :tangle yes
+(use-package! projectile
+  :config
+  (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up)))
 #+end_src
 ** Org Mode
 #+begin_src emacs-lisp
