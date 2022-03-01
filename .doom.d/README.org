@@ -162,15 +162,8 @@ Set some variables and keep my secrets secret.
 (use-package! org
   :config
   (setq org-directory "~/org-roam/"
-        org-agenda-files '("~/org-roam/agenda.org")))
-#+end_src
-*** Org-modern
-Prettify org mode.
-#+begin_src emacs-lisp :tangle yes
-(use-package! org-modern
-  :after org
-  :config
-  (add-hook! 'org-mode-hook #'org-modern-mode))
+        org-agenda-files '("~/org-roam/agenda.org"))
+  (add-hook 'org-mode-hook #'org-modern-mode))
 #+end_src
 *** Ox-latex
 #+begin_src emacs-lisp
