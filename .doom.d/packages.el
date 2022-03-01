@@ -8,3 +8,4 @@
 (package! org-ref)
 (package! helm-bibtex)
 (package! exec-path-from-shell)
+(package! org-modern)
