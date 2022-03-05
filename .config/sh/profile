@@ -10,4 +10,12 @@ fi
 [ -f "../sh/aliasrc" ] && . "../sh/aliasrc"
 [ -f "/usr/share/nvm/init-nvm.sh" ] && . "/usr/share/nvm/init-nvm.sh"
 
+XMONAD_CONFIG_DIR="$HOME/.config/xmonad"
+XMONAD_DATA_DIR="$XMONAD_CONFIG_DIR/data"
+XMONAD_CACHE_DIR="$XMONAD_CONFIG_DIR/cache"
+
+export XMONAD_CONFIG_DIR
+export XMONAD_DATA_DIR
+export XMONAD_CACHE_DIR
+
 export PATH="${PATH}:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.local/.stack/"
