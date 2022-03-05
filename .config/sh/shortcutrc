@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Sets bindings for vi command mode.
 bind -m vi-command \

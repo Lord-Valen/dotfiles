@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # Use neovim when possible
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"

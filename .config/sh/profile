@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+if test -n "$BASH_VERSION"; then
+    [ -f "../bash/bash_profile" ] && . "../bash/bash_profile"
+elif test -n "$ZSH_VERSION"; then
+    [ -f "../zsh/zprofile" ] && . "../zsh/zprofile"
+fi
+
+[ -f "../sh/shortcutrc" ] && . "../sh/shortcutrc"
+[ -f "../sh/aliasrc" ] && . "../sh/aliasrc"
+[ -f "/usr/share/nvm/init-nvm.sh" ] && . "/usr/share/nvm/init-nvm.sh"
+
+export PATH="${PATH}:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.local/.stack/"

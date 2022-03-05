@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+HISTSIZE=1000000
+HISTFILE="./.history"
+
+[ -f "./shortcutrc" ] && . "./shortcutrc"
+[ -f "./aliasrc" ] && . "./aliasrc"
+[ -f "/usr/share/nvm/init-nvm.sh" ] && . "/usr/share/nvm/init-nvm.sh"
