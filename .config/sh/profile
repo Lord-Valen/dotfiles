@@ -6,10 +6,6 @@ elif test -n "$ZSH_VERSION"; then
     [ -f "../zsh/zprofile" ] && . "../zsh/zprofile"
 fi
 
-[ -f "../sh/shortcutrc" ] && . "../sh/shortcutrc"
-[ -f "../sh/aliasrc" ] && . "../sh/aliasrc"
-[ -f "/usr/share/nvm/init-nvm.sh" ] && . "/usr/share/nvm/init-nvm.sh"
-
 XMONAD_CONFIG_DIR="$HOME/.config/xmonad"
 XMONAD_DATA_DIR="$XMONAD_CONFIG_DIR/data"
 XMONAD_CACHE_DIR="$XMONAD_CONFIG_DIR/cache"
