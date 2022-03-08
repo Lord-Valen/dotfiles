@@ -6,7 +6,10 @@
 *** Governing Parties :gov:
 **** [[https://liberal.ca/feed/][Liberal Party of Canada]]
 *** Populist Parties :pop:
-****
+
+** Podcasts :podc:
+*** Tech :tech:
+**** [[https://surveillancereport.tech/feed][Surveillance Report]] :privacy:security:
 
 ** Blogs :blog:
 *** Tech :tech:
@@ -31,3 +34,6 @@
 *** [[https://archlinux.org/feeds/news][archlinux]] :arch:
 *** [[https://weekly.nixos.org/feeds/all.rss.xml][NixOS]] :nixos:
 **** [[https://mobile.nixos.org/index.xml][Mobile NixOS]] :mobile:
+
+** Android :android:
+*** [[https://calyxos.org/feed.xml][CalyxOS]] :foss:privacy:
