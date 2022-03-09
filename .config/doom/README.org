@@ -81,7 +81,7 @@ Set fonts and font sizes. Select Doom Theme.
 #+begin_src emacs-lisp
 (use-package! elfeed-org
   :config
-  (setq rmh-elfeed-org-files '("~/.doom.d/elfeed.org")
+  (setq rmh-elfeed-org-files '("~/.config/doom/elfeed.org")
         elfeed-search-filter "@1-week-ago +unread ")
   (add-hook 'elfeed-new-entry-hook (elfeed-make-tagger :before "2 weeks ago" :remove 'unread))
   (add-hook 'elfeed-search-mode-hook 'elfeed-update))
@@ -141,8 +141,7 @@ Set some variables and keep my secrets secret.
 #+end_src
 ** Projectile
 #+begin_src emacs-lisp :tangle yes
-(use-package! projectile
-  :config
+(after! projectile
   (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up)))
 #+end_src
 ** Org Mode

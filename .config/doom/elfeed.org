@@ -22,6 +22,7 @@
 
 ** News :news:
 *** Tech :tech:
+**** [[https://www.eff.org/rss/updates.xml][EFF]] :foss:
 **** [[https://news.itsfoss.com/feed][It's FOSS]] :foss:
 **** [[https://riscv.org/feed/][RISC-V]] :foss:fosh:riscv:
 **** [[https://www.fedscoop.com/feed][FEDSCOOP]] :scoop:
@@ -29,6 +30,7 @@
 ***** [[https://www.wired.com/feed/security/rss][WIRED Security]] :wired:
 ***** [[https://feeds.feedburner.com/TheHackersNews][The Hacker News]]
 ***** [[https://www.cyberscoop.com/feed/][CYBERSCOOP]] :scoop:
+***** [[https://www.bleepingcomputer.com/feed/][BleepingComputer]]
 
 ** Linux :linux:
 *** [[https://archlinux.org/feeds/news][archlinux]] :arch:
