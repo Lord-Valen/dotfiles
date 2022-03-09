@@ -2,7 +2,6 @@
 #+AUTHOR:       Lord Valen
 #+DATE:         June 12, 2021
 #+DESCRIPTION:  Lord Valen's DOOM config
-#+PROPERTY:     header-args :tangle config.el
 * Table of Contents :TOC:
 - [[#lexical-binding][Lexical Binding]]
 - [[#macros][Macros]]
@@ -142,7 +141,8 @@ Set some variables and keep my secrets secret.
 ** Projectile
 #+begin_src emacs-lisp :tangle yes
 (after! projectile
-  (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up)))
+  (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))
+  (setq projectile-project-search-path '(("~/dev" . 1))))
 #+end_src
 ** Org Mode
 #+begin_src emacs-lisp
