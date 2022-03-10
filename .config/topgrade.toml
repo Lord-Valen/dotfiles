@@ -1,17 +1,9 @@
-# Don't ask for confirmations
 assume_yes = true
-
-# Disable specific steps - same options as the command line flag
-#disable = ["system", "emacs"]
-
-# Ignore failures for these steps
-#ignore_failures = ["powershell"]
-
-# Run specific steps - same options as the command line flag
-#only = ["system", "emacs"]
-
-# Cleanup temporary or old files
 cleanup = true
+
+#disable = ["system", "emacs"]
+ignore_failures = ["vim"]
+#only = ["system", "emacs"]
 
 [git]
 max_concurrency = 5
@@ -24,13 +16,12 @@ repos = [
 ]
 arguments = "--rebase --autostash"
 
-# Commands to run before anything
 [pre_commands]
-#"Emacs Snapshot" = "rm -rf ~/.emacs.d/elpa.bak && cp -rl ~/.emacs.d/elpa ~/.emacs.d/elpa.bak"
 
 [commands]
-"Doom" = "~/.emacs.d/bin/doom sync && ~/.emacs.d/bin/doom doctor"
+"Doom Sync" = "~/.config/emacs/bin/doom sync -p && ~/.config/emacs/bin/doom doctor"
 "Xmonad Recompile" = "/usr/bin/xmonad --recompile"
+"Reflector" = "/usr/bin/sudo ~/.local/bin/mirrorlist"
 
 [linux]
 arch_package_manager = "paru"
