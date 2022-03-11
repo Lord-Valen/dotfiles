@@ -1,28 +1,5 @@
-#+TITLE:        DOOM Emacs Config
-#+AUTHOR:       Lord Valen
-#+DATE:         June 12, 2021
-#+DESCRIPTION:  Lord Valen's DOOM config
-* Table of Contents :TOC:
-- [[#lexical-binding][Lexical Binding]]
-- [[#macros][Macros]]
-- [[#functions][Functions]]
-  - [[#latex-headers][latex-headers]]
-- [[#name-and-email][Name and Email]]
-- [[#appearance][Appearance]]
-- [[#package-config][Package Config]]
-  - [[#colemak-evil][Colemak Evil]]
-  - [[#elfeed][Elfeed]]
-  - [[#eww][EWW]]
-  - [[#irc][IRC]]
-  - [[#projectile][Projectile]]
-  - [[#org-mode][Org Mode]]
-
-* Lexical Binding
-#+begin_src emacs-lisp :tangle yes
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-#+end_src
-* Macros
-#+begin_src emacs-lisp :tangle yes
+
 (defmacro :hook (hook-name &rest body)
   "A simple wrapper around `add-hook'"
   (declare (indent defun))
@@ -38,22 +15,14 @@
                      `(lambda () ,@body))
                  `',first)))
     `(add-hook ',hook-sym ,body nil ,local)))
-#+end_src
-* Functions
-** latex-headers
-#+begin_src emacs-lisp :tangle yes
+
 (defun mine/latex-headers (headers)
   (mapconcat (function (lambda (x) (format "#+LATEX_HEADER: %s" x))) headers "\n"))
-#+end_src
-* Name and Email
-#+begin_src emacs-lisp :tangle yes
+
 (setq user-full-name "Lord Valen"
       user-mail-address "lord_valen@pm.me")
 (setq shell-file-name "bash")
-#+end_src
-* Appearance
-Set fonts and font sizes. Select Doom Theme.
-#+begin_src emacs-lisp :tangle yes
+
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 13)
       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font")
       doom-big-font (font-spec :family "FiraCode Nerd Font" :size 18))
@@ -65,45 +34,32 @@ Set fonts and font sizes. Select Doom Theme.
       doom-themes-enable-italic t
       global-prettify-symbols-mode t
       doom-theme 'doom-outrun-electric)
-#+end_src
-* Package Config
-** Colemak Evil
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! evil-colemak-basics
   :after evil
   :init
   (setq evil-colemak-basics-layout-mod `mod-dh)
   :config
   (global-evil-colemak-basics-mode))
-#+end_src
-** Elfeed
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! elfeed-org
  :config
  (setq rmh-elfeed-org-files (--map substitute-env-in-file-name (list "$XDG_CONFIG_HOME/doom/elfeed.org"))
        elfeed-search-filter "@1-week-ago +unread ")
  (add-hook 'elfeed-new-entry-hook (elfeed-make-tagger :before "2 weeks ago" :remove 'unread))
  (add-hook 'elfeed-search-mode-hook 'elfeed-update))
-#+end_src
-** EWW
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! eww
   :config
   (setq browse-url-browser-function 'eww-browse-url
         browse-url-secondary-browser-function 'browse-url-default-browser))
-#+end_src
-** IRC
-*** Credential management
-Set some variables and keep my secrets secret.
-#+begin_src emacs-lisp :tangle yes
+
 (setq creds "$XDG_CONFIG_HOME/doom/creds.el"
       nick "lord-valen")
 (defun pass (server) (with-temp-buffer
                         (insert-file-contents-literally creds)
                         (plist-get (read (buffer-string)) :pass)))
-#+end_src
-*** Circe Network Options
-#+begin_src emacs-lisp :tangle yes
+
 (setq circe-network-options
       '(("Freenode" :host "chat.freenode.net" :port (6667 . 6697)
          :tls t
@@ -116,45 +72,32 @@ Set some variables and keep my secrets secret.
                     "#science"
                     "#emacs"
                     "#"))))
-#+end_src
-*** Circe Format
-**** Messages
-#+begin_src emacs-lisp :tangle yes
+
 (setq circe-format-say "{nick:-16s}> {body}"
       circe-format-self-say "{nick:-16s}> {body}"
       circe-format-message "{nick:-16s} => {chattarget}> {body}"
       circe-format-self-message "{nick:-16s} => {chattarget}> {body}")
-#+end_src
-**** Prompt
-#+begin_src emacs-lisp :tangle yes
+
 (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
 (defun my-circe-prompt ()
   (lui-set-prompt
    (concat (propertize (concat (buffer-name) ">")
                        'face 'circe-prompt-face)
            " ")))
-#+end_src
-*** Filter
-#+begin_src emacs-lisp :tangle yes
+
 (setq circe-reduce-lurker-spam t)
-#+end_src
-** Projectile
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! projectile
   :config
   (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up)
         projectile-project-search-path '(("~/dev" . 1))))
-#+end_src
-** Org Mode
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! org
   :config
   (setq org-directory "~/org-roam/"
         org-agenda-files '("~/org-roam/agenda.org"))
   (add-hook 'org-mode-hook #'org-modern-mode))
-#+end_src
-*** Ox-latex
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! ox-latex
   :after org
   :init
@@ -225,9 +168,7 @@ Set some variables and keep my secrets secret.
 ;; deleted unwanted file extensions after latexMK
 (setq org-latex-logfiles-extensions
       (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
-#+end_src
-*** Org-Roam
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! org-roam
   :after org
   :config
@@ -286,9 +227,7 @@ Set some variables and keep my secrets secret.
                  (preserve-size . (t nil))
                  (window-parameters . ((no-other-window . t)
                                        (no-delete-other-windows . t))))))
-#+end_src
-*** Org-ref
-#+begin_src emacs-lisp :tangle yes
+
 (use-package! org-ref
     :after org
     :config
@@ -308,4 +247,3 @@ Set some variables and keep my secrets secret.
                   :empty-lines 1        ; properties
                   :created t            ; properties
                   ))))
-#+end_src
