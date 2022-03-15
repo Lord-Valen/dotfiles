@@ -14,7 +14,6 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
-(defvar +literate-config-file "~/.config/doom/README.org")
 (when (daemonp)
   (exec-path-from-shell-initialize))
 (doom! :input

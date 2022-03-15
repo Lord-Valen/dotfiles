@@ -44,7 +44,7 @@
 
 (use-package! elfeed-org
  :config
- (setq rmh-elfeed-org-files (--map substitute-env-in-file-name (list "$XDG_CONFIG_HOME/doom/elfeed.org"))
+ (setq rmh-elfeed-org-files (--map (substitute-env-in-file-name it) (list "$XDG_CONFIG_HOME/doom/elfeed.org"))
        elfeed-search-filter "@1-week-ago +unread ")
  (add-hook 'elfeed-new-entry-hook (elfeed-make-tagger :before "2 weeks ago" :remove 'unread))
  (add-hook 'elfeed-search-mode-hook 'elfeed-update))
