@@ -1,0 +1,6 @@
+[submodule "doom-emacs-config"]
+	path = doom-emacs-config
+	url = https://github.com/Lord-Valen/doom-emacs-config.git
+[submodule ".config/doom"]
+	path = .config/doom
+	url = https://github.com/Lord-Valen/doom-emacs-config.git
