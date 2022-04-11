@@ -3,8 +3,8 @@ services:
     image: ghcr.io/linuxserver/prowlarr:develop
     container_name: prowlarr
     environment:
-      - PUID=111
-      - PGID=123
+      - PUID=1000
+      - PGID=1000
       - UMASK=002
       - TZ=Canada/Eastern
     volumes:
@@ -17,8 +17,8 @@ services:
     image: lscr.io/linuxserver/lidarr
     container_name: lidarr
     environment:
-      - PUID=222
-      - PGID=123
+      - PUID=1000
+      - PGID=1000
       - UMASK=002
       - TZ=Canada/Eastern
     volumes:
@@ -32,8 +32,8 @@ services:
     image: lscr.io/linuxserver/sonarr
     container_name: sonarr
     environment:
-      - PUID=333
-      - PGID=123
+      - PUID=1000
+      - PGID=1000
       - UMASK=002
       - TZ=Canada/Eastern
     volumes:
@@ -47,8 +47,8 @@ services:
     image: lscr.io/linuxserver/radarr
     container_name: radarr
     environment:
-      - PUID=444
-      - PGID=123
+      - PUID=1000
+      - PGID=1000
       - UMASK=002
       - TZ=Canada/Eastern
     volumes:
@@ -62,8 +62,8 @@ services:
     image: ghcr.io/linuxserver/readarr:nightly
     container_name: readarr
     environment:
-      - PUID=555
-      - PGID=123
+      - PUID=1000
+      - PGID=1000
       - UMASK=002
       - TZ=Canada/Eastern
     volumes:
@@ -77,8 +77,8 @@ services:
     image: lscr.io/linuxserver/deluge
     container_name: deluge
     environment:
-      - PUID=666
-      - PGID=123
+      - PUID=1000
+      - PGID=1000
       - UMASK=002
       - TZ=Canada/Eastern
     volumes:
@@ -95,8 +95,8 @@ services:
     image: lscr.io/linuxserver/jellyfin
     container_name: jellyfin
     environment:
-      - PUID=777
-      - PGID=123
+      - PUID=1000
+      - PGID=1000
       - UMASK=002
       - TZ=Canada/Eastern
     volumes:
