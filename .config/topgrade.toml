@@ -21,7 +21,7 @@ arguments = "--rebase --autostash"
 [commands]
 "Doom Sync" = "$XDG_CONFIG_HOME/emacs/bin/doom sync -p && $XDG_CONFIG_HOME/emacs/bin/doom doctor"
 "Xmonad Recompile" = "/usr/bin/xmonad --recompile"
-"Reflector" = "$HOME/.local/bin/mirrorlist"
+"Reflector" = "$HOME/.local/bin/mirrorlist --sort rate --save /etc/pacman.d/mirrorlist --threads 5"
 "Docker" = "$HOME/.local/bin/dockerup"
 
 [linux]
