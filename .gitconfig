@@ -7,3 +7,5 @@
 	insteadOf = https://gitlab.com/
 [commit]
 	gpgSign = true
+[merge]
+	conflictStyle = zdiff3
