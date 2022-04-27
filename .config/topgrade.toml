@@ -20,9 +20,9 @@ arguments = "--rebase --autostash"
 
 [commands]
 "Doom Sync" = "$XDG_CONFIG_HOME/emacs/bin/doom sync -p && $XDG_CONFIG_HOME/emacs/bin/doom doctor"
-"Xmonad Recompile" = "/usr/bin/xmonad --recompile"
+"Xmonad Recompile" = "xmonad --recompile"
 "Docker" = "$HOME/.local/bin/dockerup"
-"Nix GC" = "/usr/bin/nix-env --delete-generations 14d && nix-store --gc"
+"Nix GC" = "nix-env --delete-generations 14d && nix-store --gc"
 
 [linux]
 arch_package_manager = "paru"
