@@ -9,5 +9,4 @@ else
         . "$HOME/.xprofile"
         fi
 
-dinit &
 exec xmonad
