@@ -14,7 +14,7 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
        , commands = [ Run XMonadLog
                         -- Get kernel version
                     , Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
-                    , Run Com "echo" ["fixme"] "kernel" 36000
+                    , Run Com "kernel" [] "kernel" 36000
                         -- Cpu usage in percent
                     , Run Cpu ["-t", "<fn=2>\xf108</fn>  cpu: (<total>%)","-H","50","--high","red"] 20
                         -- Ram used number and percent
