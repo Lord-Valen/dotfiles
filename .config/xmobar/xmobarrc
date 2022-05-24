@@ -3,8 +3,8 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
                            , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                            , "xft:Font Awesome 6 Brands:pixelsize=12"
                            ]
-       , bgColor      = "#282c34"
-       , fgColor      = "#ff6c6b"
+       , bgColor      = "#0c0a20"
+       , fgColor      = "#f2f3f7"
        , position     = TopSize C 100 30
        , lowerOnStart = True
        , hideOnStart  = False
@@ -35,5 +35,5 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "   <action=`rofi -show run`><icon=haskell_20.xpm/></action> <fc=#666666>|</fc> %XMonadLog% }{ <box type=Bottom width=2 mb=2 color=#51afef><fc=#51afef>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b><action=`kitty htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#ff6c6b><fc=#ff6c6b><action=`kitty htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#a9a1e1><fc=#a9a1e1>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65>%uparrow%  %uptime%</fc></box>   <box type=Bottom width=2 mb=2 color=#da8548><fc=#da8548>%baticon%  %battery%</fc></box> %trayerpad%   "
+       , template = "   <action=`rofi -show run`><icon=haskell_20.xpm/></action> <fc=#666666>|</fc> %XMonadLog% }{ <box type=Bottom width=2 mb=2 color=#1ea8fc><fc=#1ea8fc>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#ffd400><fc=#ffd400><action=`kitty htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#e61f44><fc=#e61f44><action=`kitty htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#df85ff><fc=#df85ff>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#a7da1e><fc=#a7da1e>%uparrow%  %uptime%</fc></box>   <box type=Bottom width=2 mb=2 color=#cf433e><fc=#cf433e>%baticon%  %battery%</fc></box> %trayerpad%"
        }
