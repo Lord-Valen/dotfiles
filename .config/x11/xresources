@@ -1,5 +1,5 @@
 !! Set a default font and font size as below:
-*.font: Inconsolata\ Nerd\ Font\ Mono:size=12
+*.font: FiraCode\ Nerd\ Font\ Mono:size=12
 
 /* name		dark	light
 black           0	8
@@ -11,6 +11,45 @@ purple	        5	13
 cyan	    	6	14
 white	        7	15 */
 
+!! doom-outrun-electric
+! special
+*.foreground:  #f2f3f7
+*.background:  #0c0a20
+*.cursorColor: #f2f3f7
+
+! black
+*.color0:  #1f1147
+*.color8:  #ba45a3
+
+! red
+*.color1:  #e61f44
+*.color9:  #cf433e
+
+! green
+*.color2:  #a7da1e
+*.color10: #a875ff
+
+! yellow
+*.color3:  #cf433e
+*.color11: #ffd400
+
+! blue
+*.color4:  #1ea8fc
+*.color12: #3f88ad
+
+! magenta
+*.color5:  #ff2afc
+*.color13: #df85ff
+
+! cyan
+*.color6:  #204052
+*.color14: #42c6ff
+
+! white
+*.color7:  #110d26
+*.color15: #919ad9
+
+/*
 !! Doom One
 !special
 *.foreground:  #bbc2cf
@@ -48,6 +87,7 @@ white	        7	15 */
 ! white
 *.color7:       #202328
 *.color15:      #dfdfdf
+*/
 
 /*!! Shapeshifter
 ! special
