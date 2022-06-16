@@ -7,7 +7,7 @@ Config { font         = "xft:FiraCode:weight=bold:pixelsize=11:antialias=true:hi
        , hideOnStart  = False
        , allDesktops  = True
        , persistent   = True
-       , iconRoot     = ".config/xmonad/xpm/"
+       , iconRoot     = "./xpm/"
        , commands = [ Run XMonadLog
                         -- Get kernel version
                     , Run Com "uname" ["-r"] "kernel" 36000
