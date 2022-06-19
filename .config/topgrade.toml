@@ -1,9 +1,7 @@
 assume_yes = true
 cleanup = true
 
-#disable = ["nix"]
 ignore_failures = ["vim"]
-#only = ["system", "emacs"]
 
 [git]
 max_concurrency = 5
@@ -21,7 +19,6 @@ arguments = "--rebase --autostash"
 [commands]
 "Doom Sync" = "$XDG_CONFIG_HOME/emacs/bin/doom sync -p && $XDG_CONFIG_HOME/emacs/bin/doom doctor"
 "Xmonad Recompile" = "xmonad --recompile"
-"Docker" = "$HOME/.local/bin/dockerup"
 "Nix GC" = "nix-env --delete-generations 14d && nix-store --gc"
 
 [linux]

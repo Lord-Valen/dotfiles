@@ -6,7 +6,7 @@
 [url "git@gitlab.com:"]
 	insteadOf = https://gitlab.com/
 [commit]
-	gpgSign = true
+    gpgSign = true
 [merge]
 	conflictStyle = zdiff3
 [init]
